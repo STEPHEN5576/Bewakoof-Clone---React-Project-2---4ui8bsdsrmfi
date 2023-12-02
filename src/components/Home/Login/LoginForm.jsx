@@ -49,7 +49,10 @@ const LoginForm = ({ onSignupClick }) => {
       </div>
       <div className={styles.Form}>
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+          <Form.Group
+            className="mb-4"
+            controlId="formBasicEmail"
+          >
             <Form.Control
               type="email"
               placeholder="Enter email"

@@ -1,0 +1,13 @@
+.Banner {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  height: auto;
+}
+
+@media screen and(max-width: 425) {
+  .Banner {
+    width: 100px;
+  }
+}

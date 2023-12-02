@@ -1,13 +1,11 @@
-// actions/categories.js
 import config from "../../config";
-// Import the config file
 import {
   CATEGORIES_LOADING,
   CATEGORIES_SUCCESS,
   CATEGORIES_ERROR,
-} from "./categories.types";
+} from "./catagories.types"; // Fix the import path
 
-const { projectId } = config; // Destructure the projectId from the config
+const { projectId } = config;
 
 export const fetchCategories = () => async (dispatch) => {
   dispatch({ type: CATEGORIES_LOADING });
@@ -23,11 +21,13 @@ export const fetchCategories = () => async (dispatch) => {
     );
 
     const data = await response.json();
+    console.log("Data received:", data);
 
     dispatch({
       type: CATEGORIES_SUCCESS,
-      payload: data,
+      payload: data.data,
     });
+    console.log("Data dispatched:", data);
   } catch (error) {
     dispatch({ type: CATEGORIES_ERROR });
   }

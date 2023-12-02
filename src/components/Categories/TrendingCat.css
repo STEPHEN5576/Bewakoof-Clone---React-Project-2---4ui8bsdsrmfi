@@ -1,0 +1,16 @@
+.TrendingCat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.TrendingCatImage {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  justify-content: space-between; /* Add space between items */
+}
+.TrendingCatImage img {
+  padding: 1%;
+  box-sizing: border-box;
+}

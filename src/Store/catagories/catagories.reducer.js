@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   loading: false,
-  data: [],
+  data: [], // Initialize data as an array
   error: false,
 };
 
@@ -18,10 +18,11 @@ const categoriesReducer = (state = initialState, action) => {
       return { ...state, loading: true, error: false };
 
     case CATEGORIES_SUCCESS:
+      console.log("Reducer Data received:", action.payload);
       return {
         ...state,
         loading: false,
-        data: action.payload,
+        data: action.payload, // Update this line
         error: false,
       };
 

@@ -42,27 +42,59 @@ const Navabar = () => {
           </div>
         </div>
       </div>
-      <div style={{ backgroundColor: "white", borderBottom: "1px solid" }}>
+      <div
+        style={{
+          backgroundColor: "white",
+          borderBottom: "1px solid",
+          height: "60px",
+          paddingTop: "15px",
+          display: "flex",
+          alignContent: "center",
+        }}
+      >
         <div className={styles.bottom}>
           <Navbar bg="white" expand="lg">
             <Container fluid>
-              <Navbar.Brand onClick={() => navigate("/categories")}>
-                <img
-                  className={styles.logo}
-                  src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"
-                  alt=""
-                />
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="navbarScroll" />
-              <Navbar.Collapse id="navbarScroll">
-                <Nav
-                  className={`me-auto my-2 my-lg-0 ${styles.navlinks}`}
-                  style={{ maxHeight: "100px" }}
-                  navbarScroll
+              <Nav
+                className={`me-auto my-2 my-lg-0 ${styles.navlinks}`}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+                navbarScroll
+              >
+                <Navbar.Brand onClick={() => navigate("/categories")}>
+                  <img
+                    className={styles.logo}
+                    src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"
+                    alt=""
+                    style={{ display: "flex", alignItems: "center" }}
+                  />
+                </Navbar.Brand>
+                {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
+                <Navbar.Collapse
+                  id="navbarScroll"
+                  style={{
+                    display: "flex",
+                    alignContent: "baseline",
+                    marginBottom: "10px",
+                  }}
                 >
+                  {/* <Nav
+                  className={`me-auto my-2 my-lg-0 ${styles.navlinks}`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                  navbarScroll
+                > */}
                   <Nav.Link
                     className={styles.navlinks}
-                    style={{ marginRight: "22px" }}
+                    style={{
+                      marginRight: "22px",
+                      //  marginLeft: "20%"
+                    }}
                     onClick={() => navigate("/mens")}
                   >
                     Men
@@ -86,10 +118,11 @@ const Navabar = () => {
                       placeholder="Search"
                       className="me-2"
                       aria-label="Search"
+                      style={{ alignContent: "center" }}
                     />
                   </Form>
                   <Nav.Link
-                    className={styles.navlinks}
+                    className={`${styles.navlinks} ms-auto`}
                     style={{ marginRight: "21px" }}
                     onClick={handleLoginClick}
                   >
@@ -115,10 +148,14 @@ const Navabar = () => {
                       className={styles.flag}
                       src="https://media.istockphoto.com/vectors/flag-of-india-vector-id519611160?k=20&m=519611160&s=170667a&w=0&h=JOCO7AChggIcda8uslrXXXt90mL6gylVXZVu-RipZxg="
                       alt=""
+                      style={{
+                        fontSize: "25px",
+                        marginBottom: "5px",
+                      }}
                     />
                   </Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
+                </Navbar.Collapse>
+              </Nav>
             </Container>
           </Navbar>
         </div>

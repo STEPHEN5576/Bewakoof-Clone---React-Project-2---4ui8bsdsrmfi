@@ -1,0 +1,70 @@
+/* components/Categories/Header.css */
+.My-first-Products {
+  /* Add any global styles for the component container */
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 10s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 35%;
+  box-sizing: border-box;
+}
+
+.slide img {
+  width: 100%;
+  height: 500px;
+  /* max-height: fixed; */
+  /* border: 1px solid #ddd;  */
+  /* Add border or other styling as needed */
+  border-radius: 4px;
+  margin: 8px;
+  /* Add margin or other spacing as needed */
+}
+.slide p {
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+
+  /* background: rgba(0, 0, 0, 0.7); */
+  /* Adjust background color and opacity as needed */
+  color: #fff;
+  font-size: 29px;
+
+  /* Text color */
+  padding: 20px;
+
+  margin: 0;
+  box-sizing: border-box;
+  object-fit: contain;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background-color: #cbcbcd; */
+  background-color: rgba(203, 203, 205, 0.4);
+  color: #0b0101;
+  border: none;
+  padding: 30px;
+  cursor: pointer;
+  border-radius: 100%;
+  font-size: 200%;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
