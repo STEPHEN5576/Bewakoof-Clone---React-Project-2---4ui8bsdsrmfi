@@ -7,12 +7,12 @@ import {
 
 const { projectId } = config;
 
-export const fetchCategories = () => async (dispatch) => {
+export const fetchCategories = (api) => async (dispatch) => {
   dispatch({ type: CATEGORIES_LOADING });
 
   try {
     const response = await fetch(
-      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/categories",
+      api,
       {
         headers: {
           projectId: projectId,

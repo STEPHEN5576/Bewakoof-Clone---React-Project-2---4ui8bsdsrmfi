@@ -5,6 +5,7 @@
   margin: auto;
   padding: 20px;
   padding-bottom: 0px;
+  z-index: 1;
 }
 .container > div {
   flex: 1;

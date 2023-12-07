@@ -64,7 +64,7 @@ const Navabar = () => {
                 }}
                 navbarScroll
               >
-                <Navbar.Brand onClick={() => navigate("/categories")}>
+                <Navbar.Brand onClick={() => navigate("/")}>
                   <img
                     className={styles.logo}
                     src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"

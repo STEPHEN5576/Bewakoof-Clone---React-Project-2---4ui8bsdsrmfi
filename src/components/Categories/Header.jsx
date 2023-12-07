@@ -47,7 +47,9 @@ function Header() {
   // const itemsPerPage = 3;
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    const apiUrl =
+      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=50";
+    dispatch(fetchProducts(apiUrl));
   }, [dispatch]);
 
   const { loading, data, error } = useSelector((state) => state.product);
@@ -76,7 +78,7 @@ function Header() {
       responsive={responsive}
       deviceType="desktop"
     >
-      {data.slice(0, 50).map((image) => {
+      {data.map((image) => {
         // {
         //   console.log("images", image);
         // }
