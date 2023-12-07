@@ -8,6 +8,8 @@ import Footer from "./components/Home/Footer/Footer";
 import Mens from "./Pages/Mens";
 import Womens from "./Pages/Womens";
 import Product from "./Pages/Product";
+import RequiredAuth from "./components/Authentication/RequiredAuth";
+import Cart from "./Pages/Cart";
 function App() {
   return (
     <div className="App">
@@ -19,6 +21,14 @@ function App() {
         <Route path="/womens" element={<Womens />} />
 
         <Route path="/Product/:_id" element={<Product />} />
+        <Route
+          path="/cart"
+          element={
+            <RequiredAuth>
+              <Cart />
+            </RequiredAuth>
+          }
+        />
       </Routes>
       <Footer />
     </div>

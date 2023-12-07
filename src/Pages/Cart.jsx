@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Allcards from "../Components/Cart/Allcards";
+import Allcards from "../components/Cart/Allcards";
 import Other2 from "../Components/Cart/Other2";
-import Others from "../Components/Cart/Others";
-import Table from "../Components/Cart/Table";
-import Tribe from "../Components/Cart/Tribe";
-import Footer from "../Components/Home/Footer";
+import Others from "../components/Cart/Others";
+import Table from "../components/Cart/Table";
+import Tribe from "../components/Cart/Tribe";
+
 import { Circles } from "react-loader-spinner";
 import { getCartApi } from "../Store/Cart/Cart.actions";
 import styles from "./Styles/Cart.module.css";
@@ -53,7 +53,6 @@ const Cart = () => {
           <Table />
         </div>
       </div>
-      
     </div>
   );
 };
