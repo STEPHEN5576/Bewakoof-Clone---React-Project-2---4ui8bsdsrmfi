@@ -5,9 +5,15 @@
   justify-content: center;
   height: auto;
 }
+.Banner img {
+  width: 50%;
+}
 
-@media screen and(max-width: 425) {
+@media screen and(max-width: 320) {
   .Banner {
-    width: 100px;
+    width: 100%;
+  }
+  .Banner img {
+    width: 50%;
   }
 }

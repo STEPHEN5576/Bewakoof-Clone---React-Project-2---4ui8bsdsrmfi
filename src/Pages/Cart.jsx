@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Allcards from "../components/Cart/Allcards";
-import Other2 from "../Components/Cart/Other2";
+import Other2 from "../components/Cart/Other2";
 import Others from "../components/Cart/Others";
 import Table from "../components/Cart/Table";
 import Tribe from "../components/Cart/Tribe";
-
 import { Circles } from "react-loader-spinner";
-import { getCartApi } from "../Store/Cart/Cart.actions";
-import styles from "./Styles/Cart.module.css";
+import { getCartApi } from "../Store/Card/Card.action";
+import styles from "./styles/Cart.module.css";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.cart);
+  const { loading, error, cart2 } = useSelector((state) => state.Cart);
 
   useEffect(() => {
     dispatch(getCartApi());
   }, []);
-
+  console.log(cart2);
   if (loading) {
     return (
       <div className={styles.Loader}>

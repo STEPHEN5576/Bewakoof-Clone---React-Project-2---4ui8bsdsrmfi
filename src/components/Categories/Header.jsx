@@ -87,6 +87,7 @@ function Header() {
             draggable={false}
             style={{ width: "100%", height: "100%" }}
             src={image.displayImage}
+            className="image"
           />
         );
       })}

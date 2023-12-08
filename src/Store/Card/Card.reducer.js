@@ -11,6 +11,7 @@ const initialState = {
   cart: [],
   loading: false,
   error: false,
+  cart2: [],
 };
 
 export const CartReducer = (state = initialState, { type, payload }) => {
@@ -22,9 +23,20 @@ export const CartReducer = (state = initialState, { type, payload }) => {
       return { ...state, loading: false, error: true };
     }
     case GET_CART_Items: {
-      return { ...state, loading: false, cart: [...payload], error: false };
+      return {
+        ...state,
+        loading: false,
+        cart: [payload],
+        cart2: [payload],
+
+        error: false,
+      };
     }
     case ADD_TO_CART: {
+      const updatedCart = [...state.cart, payload];
+
+      // Update local storage with the new cart data
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
       return {
         ...state,
         cart: [...state.cart, payload],

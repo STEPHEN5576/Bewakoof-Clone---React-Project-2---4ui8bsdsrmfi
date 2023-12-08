@@ -16,21 +16,40 @@ export const getCartApi = () => async (dispatch) => {
   dispatch({
     type: CART_LOADING,
   });
+
+  if (!token || !projectId) {
+    // Handle the case where token or projectId is missing
+    console.error("Token or projectId is missing");
+    dispatch({
+      type: CART_ERROR,
+    });
+    return;
+  }
+
   try {
-    let r = await axios.get(
+    const response = await fetch(
       "https://academics.newtonschool.co/api/v1/ecommerce/cart/",
       {
+        method: "GET",
         headers: {
-          Authorization: token,
+          Authorization: `Bearer ${token}`,
           projectId: projectId,
         },
       }
     );
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+
     dispatch({
       type: GET_CART_Items,
-      payload: r.data,
+      payload: data.data,
     });
   } catch (e) {
+    console.error("Error in getCartApi:", e);
     dispatch({
       type: CART_ERROR,
     });
