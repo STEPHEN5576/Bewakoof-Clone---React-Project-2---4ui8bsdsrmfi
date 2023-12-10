@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles/Navbar.module.css";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { connect } from "react-redux";
 import { BsHeart, BsBagCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../Store";
 import { AUTH_SIGN_OUT } from "../../Store/auth/auth.types";
+import { setInputValue } from "../../Store/searchState/search.action";
+import { fetchClothes } from "../../Store/SearchCatagories/Clothes.actions";
 
-const Navabar = () => {
+// import SearchSection from "./SearchSect/SearchSection";
+const Navabar = ({ inputValue, updateInputValue }) => {
   const navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => state.auth.data);
+  // const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
+  const [suggestions, setSuggestions] = useState([]);
+
+  const { clothes, loading, error } = useSelector((state) => state.clothes);
+  console.log("datadd", clothes);
 
   const handleLoginClick = () => {
     if (isAuthenticated) {
@@ -25,6 +34,30 @@ const Navabar = () => {
     }
     console.log(Store.getState());
   };
+
+  const handleSearch = (e) => {
+    updateInputValue(e.target.value);
+    console.log("input", inputValue);
+    const filteredSuggestions = clothes.filter((item) =>
+      item.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setSuggestions(filteredSuggestions);
+  };
+
+  const handleSelectSuggestion = (selectedItem) => {
+    // Set the selected suggestion as the input value
+    updateInputValue(selectedItem);
+    // Clear suggestions
+    setSuggestions([]);
+  };
+
+  console.log("inputvalue", inputValue);
+
+  useEffect(() => {
+    const url =
+      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products";
+    dispatch(fetchClothes(url));
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>
@@ -50,6 +83,7 @@ const Navabar = () => {
           paddingTop: "15px",
           display: "flex",
           alignContent: "center",
+          // justifyContent: "space-between",
         }}
       >
         <div className={styles.bottom}>
@@ -79,6 +113,8 @@ const Navabar = () => {
                     display: "flex",
                     alignContent: "baseline",
                     marginBottom: "10px",
+                    justifyContent: "space-between",
+                    width: "70%",
                   }}
                 >
                   {/* <Nav
@@ -119,8 +155,23 @@ const Navabar = () => {
                       className="me-2"
                       aria-label="Search"
                       style={{ alignContent: "center" }}
+                      onChange={handleSearch}
                     />
+                    {/* Display suggestions */}
+                    {suggestions.length > 0 && (
+                      <ul>
+                        {suggestions.map((item, index) => (
+                          <li
+                            key={index}
+                            onClick={() => handleSelectSuggestion(item.name)}
+                          >
+                            {item.name}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </Form>
+
                   <Nav.Link
                     className={`${styles.navlinks} ms-auto`}
                     style={{ marginRight: "21px" }}
@@ -163,5 +214,12 @@ const Navabar = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  inputValue: state.search.inputValue,
+});
 
-export default Navabar;
+const mapDispatchToProps = {
+  updateInputValue: setInputValue,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navabar);

@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   data: [],
   error: false,
+  data2: [],
 };
 
 const productReducer = (state = initialState, action) => {
@@ -22,6 +23,7 @@ const productReducer = (state = initialState, action) => {
         loading: false,
         data: action.payload,
         error: false,
+        data2: action.payload,
       };
 
     case PRODUCTS_ERROR:
