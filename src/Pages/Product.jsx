@@ -4,7 +4,7 @@ import Details from "../components/Details/Details";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../Store/catagories/catagories.action";
 // import { fetchProducts } from "../Store/Products/product.actions";
-
+import { setInputValue } from "../Store/searchState/search.action";
 import { Circles } from "react-loader-spinner";
 
 const Product = () => {
@@ -14,9 +14,23 @@ const Product = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("Current _id:", _id);
+    dispatch(setInputValue("")); // Reset search input value
+    console.log("Search input value reset to empty string");
+  }, [dispatch, _id]);
+
+  useEffect(() => {
+    dispatch(setInputValue(""));
+    const abortController = new AbortController();
+    const signal = abortController.signal;
     const url = `https://academics.newtonschool.co/api/v1/ecommerce/product/${_id}`;
-    dispatch(fetchCategories(url));
-  }, []);
+    dispatch(fetchCategories(url, signal));
+
+    return () => {
+      abortController.abort();
+    };
+  }, [_id]);
+
   console.log("data", data);
   if (loading) {
     return (

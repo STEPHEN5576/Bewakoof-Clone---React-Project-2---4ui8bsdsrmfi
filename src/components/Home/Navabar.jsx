@@ -44,11 +44,13 @@ const Navabar = ({ inputValue, updateInputValue }) => {
     setSuggestions(filteredSuggestions);
   };
 
-  const handleSelectSuggestion = (selectedItem) => {
+  const handleSelectSuggestion = (selectedItem, selectedItemId) => {
     // Set the selected suggestion as the input value
     updateInputValue(selectedItem);
     // Clear suggestions
     setSuggestions([]);
+    updateInputValue("");
+    navigate(`/Product/${selectedItemId}`);
   };
 
   console.log("inputvalue", inputValue);
@@ -159,11 +161,13 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                     />
                     {/* Display suggestions */}
                     {suggestions.length > 0 && (
-                      <ul>
+                      <ul className={styles.suggestionsList}>
                         {suggestions.map((item, index) => (
                           <li
                             key={index}
-                            onClick={() => handleSelectSuggestion(item.name)}
+                            onClick={() =>
+                              handleSelectSuggestion(item.name, item._id)
+                            }
                           >
                             {item.name}
                           </li>

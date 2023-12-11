@@ -26,8 +26,8 @@ export const CartReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        cart: [payload],
-        cart2: [payload],
+        cart: [...payload],
+        cart2: [...payload],
 
         error: false,
       };

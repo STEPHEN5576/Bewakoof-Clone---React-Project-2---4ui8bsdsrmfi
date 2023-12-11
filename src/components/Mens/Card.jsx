@@ -12,6 +12,7 @@ const Card = ({ item }) => {
   const handleNavigate = () => {
     navigate("/Product" + "/" + item._id);
   };
+  console.log("detailpage",item._id);
   return (
     <div
       className={styles.Item}

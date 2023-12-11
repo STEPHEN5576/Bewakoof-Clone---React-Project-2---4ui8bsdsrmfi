@@ -1,35 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles/div.module.css";
 import { BsHeart, BsBagCheck } from "react-icons/bs";
 import Accordions from "./Accordion";
-
-import { useState } from "react";
 import { AddtoCartApi, deleteCartApi } from "../../Store/Card/Card.action";
 import { useDispatch, useSelector } from "react-redux";
 
 const Sizes = ["S", "M", "L", "XL", "XXL", "3XL"];
-import Footer from "../Home/Footer/Footer";
 
 const Details = ({ item }) => {
   const [number, setNumber] = useState(0);
-  const { cart } = useSelector((state) => state.Cart);
+  const { cart2 } = useSelector((state) => state.Cart);
 
-  const [added, setAdded] = useState();
+  const [added, setAdded] = useState(false);
   const { isAuthenticated } = useSelector((state) => state.auth.data);
   const [color, setColor] = useState();
-  const [selected, setSelect] = useState("false");
+  const [selected, setSelect] = useState(false);
   const [buttonindex, setButtonIndex] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let check = cart.some((d) => d._id === item._id);
-    if (check) {
-      setAdded(true);
-    } else {
-      setAdded(false);
+    console.log("Current cart2 state:", cart2);
+    let isMounted = true;
+
+    if (item && item._id && isMounted && cart2) {
+      let check = cart2.some((d) => d && d._id === item._id);
+      setAdded(check);
     }
-  }, []);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [item, cart2]); // Include dependencies in the dependency array
+
   console.log("details", item.images);
+  console.log("details id", item._id);
+
   return (
     <div>
       <div className={styles.Container}>
@@ -115,13 +120,13 @@ const Details = ({ item }) => {
               <button
                 onClick={() => {
                   setAdded(true);
-                   dispatch(
-                     AddtoCartApi({
-                       item_id: item._id,
-                       size: Sizes[buttonindex],
-                       quantity: 1,
-                     })
-                   );
+                  dispatch(
+                    AddtoCartApi({
+                      item_id: item._id,
+                      size: Sizes[buttonindex],
+                      quantity: 1,
+                    })
+                  );
                 }}
                 disabled={isAuthenticated ? false : true}
               >
