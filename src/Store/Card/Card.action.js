@@ -43,13 +43,13 @@ export const getCartApi = () => async (dispatch) => {
     }
 
     const data = await response.json();
-
+    console.log("cart array",data)
     dispatch({
       type: GET_CART_Items,
       payload: data.data,
     });
   } catch (e) {
-    console.error("Error in getCartApi:", e);
+    console.error("Error in getCartApi:", e.message);
     dispatch({
       type: CART_ERROR,
     });

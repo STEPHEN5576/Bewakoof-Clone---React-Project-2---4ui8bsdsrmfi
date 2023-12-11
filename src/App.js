@@ -10,6 +10,7 @@ import Womens from "./Pages/Womens";
 import Product from "./Pages/Product";
 import RequiredAuth from "./components/Authentication/RequiredAuth";
 import Cart from "./Pages/Cart";
+import SearchResults from "./Pages/SearchResults";
 function App() {
   return (
     <div className="App">
@@ -21,6 +22,7 @@ function App() {
         <Route path="/womens" element={<Womens />} />
 
         <Route path="/Product/:_id" element={<Product />} />
+        <Route path="/search/:inputValue" element={<SearchResults />} />
         <Route
           path="/cart"
           element={

@@ -38,10 +38,26 @@ const Navabar = ({ inputValue, updateInputValue }) => {
   const handleSearch = (e) => {
     updateInputValue(e.target.value);
     console.log("input", inputValue);
-    const filteredSuggestions = clothes.filter((item) =>
-      item.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
+    const filteredSuggestions = clothes.filter((item) => {
+      const lowerCasedInput = inputValue.toLowerCase();
+
+      return (
+        item.name.toLowerCase().includes(lowerCasedInput) ||
+        (item.color && item.color.toLowerCase().includes(lowerCasedInput)) ||
+        (item.sellerTag &&
+          item.sellerTag.toLowerCase().includes(lowerCasedInput)) ||
+        (item.subCategory &&
+          item.subCategory.toLowerCase().includes(lowerCasedInput))
+      );
+    });
     setSuggestions(filteredSuggestions);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      // Handle the Enter key press
+      navigate(`/search/${inputValue}`);
+    }
   };
 
   const handleSelectSuggestion = (selectedItem, selectedItemId) => {
@@ -60,6 +76,28 @@ const Navabar = ({ inputValue, updateInputValue }) => {
       "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products";
     dispatch(fetchClothes(url));
   }, [dispatch]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const searchInput = document.getElementById("searchInput");
+      const suggestionsList = document.getElementById("suggestionsList");
+
+      if (
+        searchInput &&
+        suggestionsList &&
+        !searchInput.contains(event.target) &&
+        !suggestionsList.contains(event.target)
+      ) {
+        setSuggestions([]); // Close suggestions when clicked outside
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -154,14 +192,19 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                     <Form.Control
                       type="search"
                       placeholder="Search"
+                      id="searchInput"
                       className="me-2"
                       aria-label="Search"
                       style={{ alignContent: "center" }}
                       onChange={handleSearch}
+                      onKeyDown={handleKeyPress}
                     />
                     {/* Display suggestions */}
                     {suggestions.length > 0 && (
-                      <ul className={styles.suggestionsList}>
+                      <ul
+                        className={styles.suggestionsList}
+                        id="suggestionsList"
+                      >
                         {suggestions.map((item, index) => (
                           <li
                             key={index}
@@ -169,10 +212,12 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                               handleSelectSuggestion(item.name, item._id)
                             }
                           >
-                            {item.name}
+                            <p>{item.name}</p>
+            
                           </li>
                         ))}
                       </ul>
+                      
                     )}
                   </Form>
 
