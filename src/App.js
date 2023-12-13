@@ -11,6 +11,8 @@ import Product from "./Pages/Product";
 import RequiredAuth from "./components/Authentication/RequiredAuth";
 import Cart from "./Pages/Cart";
 import SearchResults from "./Pages/SearchResults";
+import WishList from "./Pages/WishList";
+import Payment from "./Pages/Payment";
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,22 @@ function App() {
             <RequiredAuth>
               <Cart />
             </RequiredAuth>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <RequiredAuth>
+              <WishList />
+            </RequiredAuth>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            // <RequiredAuth>
+            // </RequiredAuth>
+            <Payment />
           }
         />
       </Routes>

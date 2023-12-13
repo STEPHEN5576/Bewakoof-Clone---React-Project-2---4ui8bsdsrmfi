@@ -7,6 +7,8 @@ import productReducer from "./Products/product.reducer";
 import { CartReducer } from "./Card/Card.reducer";
 import searchReducer from "./searchState/search.reducer";
 import clothesReducer from "./SearchCatagories/Clothes.reducers";
+import wishlistReducer from "./wishlist/wishlist.reducer";
+import reviewReducer from "./review/review.reducer";
 const rootReducer = combineReducers({
   categories: categoriesReducer,
   auth: authReducer,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   Cart: CartReducer,
   search: searchReducer,
   clothes: clothesReducer,
+  wishlist: wishlistReducer,
+  review: reviewReducer,
   // ... other reducers
 });
 

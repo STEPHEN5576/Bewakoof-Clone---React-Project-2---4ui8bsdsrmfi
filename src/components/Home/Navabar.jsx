@@ -57,6 +57,7 @@ const Navabar = ({ inputValue, updateInputValue }) => {
     if (e.key === "Enter") {
       // Handle the Enter key press
       navigate(`/search/${inputValue}`);
+      setSuggestions([]);
     }
   };
 
@@ -188,7 +189,13 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                   >
                     Mobile Covers
                   </Nav.Link>
-                  <Form className={styles.Search}>
+                  <Form
+                    className={styles.Search}
+                    onSubmit={(e) => {
+                      e.preventDefault(); // Prevent the default form submission
+                      // Handle your custom logic here, if needed
+                    }}
+                  >
                     <Form.Control
                       type="search"
                       placeholder="Search"
@@ -213,11 +220,9 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                             }
                           >
                             <p>{item.name}</p>
-            
                           </li>
                         ))}
                       </ul>
-                      
                     )}
                   </Form>
 
@@ -231,6 +236,7 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                   <Nav.Link className={styles.navlinks}>
                     <BsHeart
                       style={{ fontSize: "25px", marginRight: "22px" }}
+                      onClick={() => navigate("/wishlist")}
                     />
                   </Nav.Link>
                   <Nav.Link className={styles.navlinks}>
