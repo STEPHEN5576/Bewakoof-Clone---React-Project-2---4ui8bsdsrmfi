@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { connect } from "react-redux";
 import { BsHeart, BsBagCheck } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../Store";
@@ -100,6 +101,12 @@ const Navabar = ({ inputValue, updateInputValue }) => {
     };
   }, []);
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search/${inputValue}`);
+    setSuggestions([]);
+  };
+
   return (
     <div className={styles.container}>
       <div style={{ backgroundColor: "#eeeeee" }}>
@@ -189,23 +196,22 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                   >
                     Mobile Covers
                   </Nav.Link>
-                  <Form
-                    className={styles.Search}
-                    onSubmit={(e) => {
-                      e.preventDefault(); // Prevent the default form submission
-                      // Handle your custom logic here, if needed
-                    }}
-                  >
-                    <Form.Control
-                      type="search"
-                      placeholder="Search"
-                      id="searchInput"
-                      className="me-2"
-                      aria-label="Search"
-                      style={{ alignContent: "center" }}
-                      onChange={handleSearch}
-                      onKeyDown={handleKeyPress}
-                    />
+                  <Form className={styles.Search} onSubmit={handleSearchSubmit}>
+                    <div className={styles.searchContainer}>
+                      <FaSearch
+                        className={styles.searchIcon}
+                        onClick={handleSearchSubmit}
+                      />
+                      <Form.Control
+                        type="search"
+                        placeholder="Search"
+                        id="searchInput"
+                        className="me-2"
+                        aria-label="Search"
+                        onChange={handleSearch}
+                        onKeyDown={handleKeyPress}
+                      />
+                    </div>
                     {/* Display suggestions */}
                     {suggestions.length > 0 && (
                       <ul

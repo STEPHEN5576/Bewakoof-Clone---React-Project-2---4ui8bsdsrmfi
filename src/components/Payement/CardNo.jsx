@@ -37,7 +37,8 @@ const CardNo = () => {
         handleClose={handleClose}
         message={"Your Payment Was Successfully completed "}
       />
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}
+      className={styles.modelpayment}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Card Number</Form.Label>
           <Form.Control

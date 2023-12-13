@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles/Pay.module.css";
 import Navigator from "../components/Payement/Navigator";
 import Card from "../components/Mens/Card";
 import Table from "../components/Cart/Table";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartApi } from "../Store/Card/Card.action";
 
 const Payment = () => {
   const { cart2 } = useSelector((state) => state.Cart);
-  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCartApi());
+  }, []);
+  console.log("payment", cart2.items);
+
   return (
     <>
       <div className={styles.container}>
@@ -20,13 +26,15 @@ const Payment = () => {
             <h6 className={styles.Heading}>Items You are paying for</h6>
           </div>
 
-          {cart2.map((item, index) => (
-            <Card key={index} item={item} />
-          ))}
+          {cart2.map((cartItem) => {
+            return cartItem.items.map((item) => {
+              console.log("item", item.product);
+              return <Card item={item.product} key={item._id} />;
+            });
+          })}
           <Table />
         </div>
       </div>
-     
     </>
   );
 };

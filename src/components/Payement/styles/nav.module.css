@@ -3,7 +3,10 @@
   width: 100%;
   margin: auto;
 }
-
+.modelpayment {
+  border: 1px solid black;
+  padding: 10px;
+}
 .container {
   display: flex;
   flex-direction: column;

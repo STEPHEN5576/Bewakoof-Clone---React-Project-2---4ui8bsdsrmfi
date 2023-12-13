@@ -46,9 +46,29 @@
 .navlinks > p {
   display: hidden !important;
 }
+.searchContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+}
+.searchIcon {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
 .Search {
   margin-top: 5px;
 }
+
+.Search input {
+  border: 1px solid transparent;
+  outline: none; /* Remove the default focus outline */
+}
+
+/* Style for the focused state of the input */
+.Search input:focus {
+  border: 1px solid transparent;
+  outline: none;
+}
+
 @media only screen and (min-width: 411px) and (max-width: 800px) {
   .upper {
     display: none;

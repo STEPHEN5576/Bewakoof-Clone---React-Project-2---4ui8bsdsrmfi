@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles/div.module.css";
 import { BsHeart, BsBagCheck, BsHeartFill } from "react-icons/bs";
 import Accordions from "./Accordion";
+import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
 import { AddtoCartApi, deleteCartApi } from "../../Store/Card/Card.action";
 import {
   getProductReviewsApi,
@@ -22,6 +28,8 @@ const Details = ({ item }) => {
   // console.log("reviews", reviews);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
+  const [selectedStars, setSelectedStars] = useState(0);
+  console.log("stars", selectedStars);
 
   useEffect(() => {
     // Fetch reviews when the component mounts
@@ -83,9 +91,9 @@ const Details = ({ item }) => {
     }
   };
 
-  const handleRatingChange = (event) => {
-    setSelectedRating(parseInt(event.target.value, 10));
-  };
+  // const handleRatingChange = (event) => {
+  //   setSelectedRating(parseInt(event.target.value, 10));
+  // };
 
   const handleReviewTextChange = (event) => {
     setReviewText(event.target.value);
@@ -93,12 +101,39 @@ const Details = ({ item }) => {
 
   const handlePostReview = () => {
     // Dispatch an action to add the review
-    dispatch(addReviewApi(item._id, selectedRating, reviewText));
+    dispatch(addReviewApi(item._id, selectedStars, reviewText));
 
     // Clear the input fields after posting the review
-    setSelectedRating(0);
+    setSelectedStars(0);
+    // setSelectedRating(0);
     setReviewText("");
   };
+
+  const handleStarClick = (starValue) => {
+    // Toggle the selected star value
+    setSelectedStars((prevStars) => (prevStars === starValue ? 0 : starValue));
+  };
+
+  const renderStarIcons = (rating) => {
+    const filledStars = Math.floor(rating);
+    const emptyStars = 5 - filledStars;
+
+    return (
+      <>
+        {[...Array(filledStars)].map((_, index) => (
+          <StarIcon
+            key={index}
+            className={`${styles.StarIcon} ${styles.SelectedStar}`}
+          />
+        ))}
+        {[...Array(emptyStars)].map((_, index) => (
+          <StarBorderIcon key={index} className={styles.StarIcon} />
+        ))}
+      </>
+    );
+  };
+  const navigate = useNavigate();
+
 
   return (
     <div>
@@ -208,39 +243,59 @@ const Details = ({ item }) => {
           </div>
 
           <div className={styles.Flex1}>
-            <h1>Reviews</h1>
-            {loading && <p>Loading reviews...</p>}
-            {error && <p>Error loading reviews</p>}
-            {reviews && reviews.length > 0 ? (
-              <div>
-                {reviews.map((review) => (
-                  <div key={review._id}>
-                    <p>{review.text}</p>
-                    <p>Ratings: {review.ratings}</p>
-                    <hr />
-                  </div>
-                ))}
+            <div>
+              <h1>Reviews</h1>
+              {loading && <p>Loading reviews...</p>}
+              {error && <p>Error loading reviews</p>}
+              {reviews && reviews.length > 0 ? (
+                <div>
+                  {reviews.map((review) => (
+                    <div key={review._id} className={styles.reviwed}>
+                      <p>{review.text}</p>
+                      {/* <p>Ratings: {review.ratings}</p> */}
+                      <div>{renderStarIcons(review.ratings)}</div>
+                      <hr />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No reviews available</p>
+              )}
+            </div>
+            {isAuthenticated ? (
+              <div className={styles.postreview}>
+                <h2>Your Review</h2>
+                <div className={styles.StarRating}>
+                  {[1, 2, 3, 4, 5].map((starValue) => (
+                    <label key={starValue}>
+                      {selectedStars >= starValue ? (
+                        <StarIcon
+                          onClick={() => handleStarClick(starValue)}
+                          className={`${styles.StarIcon} ${styles.SelectedStar}`}
+                        />
+                      ) : (
+                        <StarBorderIcon
+                          onClick={() => handleStarClick(starValue)}
+                          className={styles.StarIcon}
+                        />
+                      )}
+                    </label>
+                  ))}
+                </div>
+                <textarea
+                  value={reviewText}
+                  onChange={handleReviewTextChange}
+                  placeholder="Write your review..."
+                ></textarea>
+                <button onClick={handlePostReview}>Post Review</button>
               </div>
             ) : (
-              <p>No reviews available</p>
+              <p>
+                Please{" "}
+                <span onClick={() => navigate.push("/login")}>login</span> to
+                post a review.
+              </p>
             )}
-            <div>
-              <h2>Your Review</h2>
-              <select value={selectedRating} onChange={handleRatingChange}>
-                <option value={0}>Select Rating</option>
-                <option value={1}>1 Star</option>
-                <option value={2}>2 Stars</option>
-                <option value={3}>3 Stars</option>
-                <option value={4}>4 Stars</option>
-                <option value={5}>5 Stars</option>
-              </select>
-              <textarea
-                value={reviewText}
-                onChange={handleReviewTextChange}
-                placeholder="Write your review..."
-              ></textarea>
-              <button onClick={handlePostReview}>Post Review</button>
-            </div>
             {/* <Accordions label={"SAVE EXTRA WITH 3 OFFERS"} />
             <Accordions label={"PRODUCT DESCRIPTION"} />
             <Accordions label={"15 DAY RETURNS & EXCHANGE"} /> */}

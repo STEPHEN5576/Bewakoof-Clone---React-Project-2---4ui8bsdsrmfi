@@ -152,7 +152,31 @@
   font-weight: bold;
   padding: 10px;
 }
-.Flex1 > button {
+/* .Flex1 > button {
+  border: none;
+  padding: 10px;
+  width: 43%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bolder;
+} */
+.postreview {
+  display: flex;
+  flex-direction: column;
+}
+.postreview textarea {
+  border: none;
+  padding: 10px;
+  width: 43%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bolder;
+}
+.postreview button {
   border: none;
   padding: 10px;
   width: 43%;
