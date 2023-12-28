@@ -16,7 +16,7 @@ const SearchResults = () => {
     // Fetch categories when the component mounts
     dispatch(
       fetchCategories(
-        "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products"
+        "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=100"
       )
     );
   }, [dispatch]);
@@ -46,6 +46,7 @@ const SearchResults = () => {
   }
 
   const filteredSuggestions = clothes.filter((item) => {
+    // console.log("item", item);
     const lowerCasedInput = inputValue.toLowerCase();
 
     return (
@@ -54,7 +55,13 @@ const SearchResults = () => {
       (item.sellerTag &&
         item.sellerTag.toLowerCase().includes(lowerCasedInput)) ||
       (item.subCategory &&
-        item.subCategory.toLowerCase().includes(lowerCasedInput))
+        item.subCategory.toLowerCase().includes(lowerCasedInput)) ||
+      (Array.isArray(item.size) &&
+        item.size.some(
+          (size) =>
+            typeof size === "string" &&
+            size.toLowerCase().includes(lowerCasedInput)
+        ))
     );
   });
 

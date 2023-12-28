@@ -12,6 +12,7 @@ import {
 } from "./wishlist.types";
 
 const token = localStorage.getItem("token");
+console.log("token wishlist", token)
 
 export const getWishlistApi = () => async (dispatch) => {
   dispatch({
@@ -25,8 +26,8 @@ export const getWishlistApi = () => async (dispatch) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          projectID: projectId,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          projectId: projectId,
         },
       }
     );
@@ -62,8 +63,8 @@ export const addToWishlistApi = (productId) => async (dispatch) => {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          projectID: projectId,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          projectId: projectId,
         },
         body: JSON.stringify({
           productId: productId,
@@ -76,10 +77,11 @@ export const addToWishlistApi = (productId) => async (dispatch) => {
     }
 
     const data = await response.json();
+    console.log("data.item action", data);
 
     dispatch({
       type: ADD_TO_WISHLIST,
-      payload: data.item,
+      payload: data.data.items,
     });
   } catch (error) {
     console.error("Error in addToWishlistApi:", error.message);
@@ -101,8 +103,8 @@ export const removeFromWishlistApi = (productId) => async (dispatch) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          projectID: projectId,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          projectId: projectId,
         },
       }
     );
@@ -134,8 +136,9 @@ export const removeAllFromWishlistApi = () => async (dispatch) => {
       {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${token}`,
-          projectID: projectId,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          projectId: projectId,
         },
       }
     );

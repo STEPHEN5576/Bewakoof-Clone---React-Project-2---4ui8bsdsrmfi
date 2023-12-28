@@ -13,6 +13,8 @@ import Cart from "./Pages/Cart";
 import SearchResults from "./Pages/SearchResults";
 import WishList from "./Pages/WishList";
 import Payment from "./Pages/Payment";
+import "bootstrap/dist/css/bootstrap.css";
+import ComingSoonpage from "./Pages/ComingSoonpage";
 function App() {
   return (
     <div className="App">
@@ -22,7 +24,6 @@ function App() {
         <Route path="/" element={<Catagories />} />
         <Route path="/Mens" element={<Mens />} />
         <Route path="/womens" element={<Womens />} />
-
         <Route path="/Product/:_id" element={<Product />} />
         <Route path="/search/:inputValue" element={<SearchResults />} />
         <Route
@@ -49,6 +50,7 @@ function App() {
             <Payment />
           }
         />
+        <Route path="/comingsoon" element={<ComingSoonpage />} />
       </Routes>
       <Footer />
     </div>

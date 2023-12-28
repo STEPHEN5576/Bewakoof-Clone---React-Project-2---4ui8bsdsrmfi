@@ -5,12 +5,12 @@ import styles from "./styles/Card.module.css";
 import Card from "./Card";
 
 const Allcards = () => {
-  
   const { cart, cart2 } = useSelector((state) => state.Cart);
   const navigate = useNavigate();
   console.log("card2", cart2);
 
-  if (cart2.length === 0) {
+  if (cart2.some((item) => item.items.length === 0))
+   {
     return (
       <div className={styles.Empty}>
         <h3 style={{ textAlign: "center", marginTop: "30px" }}>

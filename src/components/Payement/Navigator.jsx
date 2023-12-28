@@ -9,8 +9,10 @@ import { GiCroissantsPupil } from "react-icons/gi";
 import { RiBuilding2Fill } from "react-icons/ri";
 import CardNo from "./CardNo";
 import styles from "./styles/nav.module.css";
+import { useNavigate } from "react-router";
 
 const Navigator = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.Box}>
       <div className={styles.container}>
@@ -18,23 +20,23 @@ const Navigator = () => {
           <AiFillCreditCard />
           Credit Card/DebitCard
         </div>
-        <div>
+        <div onClick={() => navigate("/comingsoon")}>
           <AiFillWallet />
           Wallet
         </div>
-        <div>
+        <div onClick={() => navigate("/comingsoon")}>
           <GiCroissantsPupil />
           UPI
         </div>
-        <div>
+        <div onClick={() => navigate("/comingsoon")}>
           <RiBuilding2Fill />
           Net bankingx
         </div>
-        <div>
+        <div onClick={() => navigate("/comingsoon")}>
           <AiFillDollarCircle />
           Cash On Deliveryx
         </div>
-        <div>
+        <div onClick={() => navigate("/comingsoon")}>
           <AiFillIdcard />
           Buy Now Pay Laterx
         </div>

@@ -47,6 +47,9 @@
   background-color: red;
   color: white;
 }
+.modaltitle {
+ text-align: center;
+}
 @media only screen and (min-width: 411px) and (max-width: 800px) {
   .flex {
     flex-direction: column;

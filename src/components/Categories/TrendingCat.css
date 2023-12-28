@@ -1,9 +1,10 @@
 .TrendingCat {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   width: 100%;
+  margin-left: auto;
 }
 
 .TrendingCatImage {
@@ -16,4 +17,7 @@
 .TrendingCatImage img {
   padding: 1%;
   box-sizing: border-box;
+}
+.TrendingCatRow {
+  width: 100%;
 }

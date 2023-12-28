@@ -1,6 +1,7 @@
 import React from "react";
 import { Image } from "semantic-ui-react";
 import "./TrendingCat.css";
+import { useNavigate } from "react-router-dom";
 const images = [
   "https://images.bewakoof.com/uploads/grid/app/category-box-printed-tees-m-1684997505.jpg",
   "https://images.bewakoof.com/uploads/grid/app/category-box-new-240x350-men-fullsleeve-1686063034.jpg",
@@ -17,7 +18,11 @@ const images = [
 ];
 function TrendingCat() {
   const imagesChunks = chunkArray(images, 6);
-
+  const navigate = useNavigate();
+  const handleImageClick = (cat) => {
+    // Perform navigation when an image is clicked
+    navigate(`/search/${cat}`);
+  };
   return (
     <div className="TrendingCat">
       <h1>TRENDING CATEGORIES</h1>
@@ -30,6 +35,7 @@ function TrendingCat() {
                 draggable={false}
                 style={{ width: "16.6%", height: "100%" }}
                 src={image}
+                onClick={() => handleImageClick("trending")}
               />
             ))}
           </div>

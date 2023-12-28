@@ -6,8 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../Store/Products/product.actions";
 import LoaderFn from "../loader/Loader";
 import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import "./Header.css"; // Import your CSS file for styling
 import { Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -41,10 +44,11 @@ const images = [
   "https://images.unsplash.com/photo-1550064824-8f993041ffd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
 ];
 
-function Header() {
+function Header(props) {
   const dispatch = useDispatch();
   // const [currentPage, setCurrentPage] = useState(1);
   // const itemsPerPage = 3;
+  // const navigate = Navigate();
 
   useEffect(() => {
     const apiUrl =
@@ -74,21 +78,39 @@ function Header() {
 
   return (
     <Carousel
-      itemClass="image-item"
+      // itemClass="image-item"
       responsive={responsive}
-      deviceType="desktop"
+      // deviceType="desktop"
+      swipeable={false}
+      showDots={true}
+      slidesToSlide={3}
+      infinite={true}
+      autoPlay={{ isEnabled: props.deviceType !== "mobile", delay: 1000 }}
+      autoPlaySpeed={1000}
+      customTransition="all .2"
+      transitionDuration={2000}
+      dotListClass="custom-dot-list-style"
     >
       {data.map((image) => {
         // {
         //   console.log("images", image);
         // }
+        // const handleNavigate = () => {
+        //   navigate("/Product" + "/" + image._id);
+        // };
         return (
-          <Image
-            draggable={false}
-            style={{ width: "100%", height: "100%" }}
-            src={image.displayImage}
-            className="image"
-          />
+          <Link to={"/Product" + "/" + image._id}>
+            <Image
+              draggable={false}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+              src={image.displayImage}
+              className="image"
+              // onClick={handleNavigate}
+            />
+          </Link>
         );
       })}
 

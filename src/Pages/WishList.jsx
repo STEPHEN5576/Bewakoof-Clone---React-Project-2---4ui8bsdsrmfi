@@ -2,16 +2,25 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getWishlistApi } from "../Store/wishlist/wishlist.action";
 import Card from "../components/Mens/Card";
-import styles from "./styles/Wishlist.module.css"
+import styles from "./styles/Wishlist.module.css";
 function WishList() {
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { wishlist, loading, error } = useSelector((state) => state.wishlist);
   console.log("wish", wishlist);
 
-  useEffect(() => {
-    // Dispatch an action to fetch the wishlist items
-    dispatch(getWishlistApi());
-  }, [dispatch]);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      await dispatch(getWishlistApi());
+      // Your code...
+    } catch (error) {
+      console.error("Error fetching wishlist:", error);
+    }
+  };
+
+  fetchData();
+}, [dispatch]);
 
   return (
     <div className={styles.main}>

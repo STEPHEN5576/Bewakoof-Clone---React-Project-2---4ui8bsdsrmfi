@@ -14,7 +14,10 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/categories");
+      navigate("/");
+    } else {
+      // Redirect to login page if signup
+      navigate("/login");
     }
   }, [isAuthenticated]);
 

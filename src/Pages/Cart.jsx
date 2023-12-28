@@ -39,6 +39,27 @@ const Cart = () => {
       </div>
     );
   }
+  if (
+    !cart2 ||
+    cart2.length === 0 ||
+    cart2.some((item) => !item || !item.items || item.items.length === 0)
+  ) {
+    return (
+      <div className={styles.Container}>
+        <div className={styles.single}>
+          <Others />
+          <Other2 />
+          <div className={styles.Empty}>
+            <h3 style={{ textAlign: "center", marginTop: "30px" }}>
+              Your Cart is Empty !
+            </h3>
+            <button onClick={() => navigate("/categories")}>Add Items</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className={styles.Container}>

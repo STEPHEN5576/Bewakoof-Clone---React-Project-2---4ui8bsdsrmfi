@@ -27,6 +27,8 @@ const authReducer = (state = initialState, { type, payload }) => {
       console.log("API Response", payload);
       localStorage.setItem("token", payload.token);
       localStorage.setItem("Email", payload.data.email);
+      localStorage.setItem("name", payload.data.name);
+      
 
       return {
         ...state,
@@ -46,6 +48,7 @@ const authReducer = (state = initialState, { type, payload }) => {
     case AUTH_SIGN_OUT:
       localStorage.removeItem("token");
       localStorage.removeItem("Email");
+      localStorage.removeItem("name");
 
       return {
         ...state,

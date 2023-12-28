@@ -10,20 +10,20 @@ import {
 } from "./Card.types";
 
 const token = localStorage.getItem("token");
-
+console.log("token", token);
 export const getCartApi = () => async (dispatch) => {
   dispatch({
     type: CART_LOADING,
   });
 
-  if (!token || !projectId) {
-    // Handle the case where token or projectId is missing
-    console.error("Token or projectId is missing");
-    dispatch({
-      type: CART_ERROR,
-    });
-    return;
-  }
+  // if (`Bearer ${localStorage.getItem("token")}` || !projectId) {
+  //   // Handle the case where token or projectId is missing
+  //   console.error("Token or projectId is missing");
+  //   dispatch({
+  //     type: CART_ERROR,
+  //   });
+  //   return;
+  // }
 
   try {
     const response = await fetch(
@@ -31,7 +31,8 @@ export const getCartApi = () => async (dispatch) => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
           projectId: projectId,
         },
       }
@@ -42,7 +43,7 @@ export const getCartApi = () => async (dispatch) => {
     }
 
     const data = await response.json();
-    console.log("cart array",data)
+    console.log("cart array", data);
     dispatch({
       type: GET_CART_Items,
       payload: data.data,
@@ -69,8 +70,8 @@ export const AddtoCartApi =
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-            projectID: projectId,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            projectId: projectId,
           },
           body: JSON.stringify({
             quantity: quantity,
@@ -107,8 +108,9 @@ export const deleteCartApi = (productID) => async (dispatch) => {
       {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${token}`,
-          projectID: projectId,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          projectId: projectId,
         },
       }
     );
@@ -140,8 +142,8 @@ export const changeCart = (productID, quantity) => async (dispatch) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          projectID: projectId,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          projectId: projectId,
         },
         body: JSON.stringify({
           qty: quantity,

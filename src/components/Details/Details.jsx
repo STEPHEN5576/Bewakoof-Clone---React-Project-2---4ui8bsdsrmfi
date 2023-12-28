@@ -5,7 +5,6 @@ import Accordions from "./Accordion";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import { AddtoCartApi, deleteCartApi } from "../../Store/Card/Card.action";
@@ -14,6 +13,7 @@ import {
   addReviewApi,
 } from "../../Store/review/review.actions";
 import {
+  getWishlistApi,
   addToWishlistApi,
   removeFromWishlistApi,
 } from "../../Store/wishlist/wishlist.action";
@@ -75,6 +75,7 @@ const Details = ({ item }) => {
       isMounted = false;
     };
   }, [item, wishlist]);
+
   const handleWishlistClick = () => {
     if (added2) {
       // If the item is already in the wishlist, remove it
@@ -89,6 +90,7 @@ const Details = ({ item }) => {
       // (Implement this action in your wishlist actions file)
       dispatch(addToWishlistApi(item._id));
     }
+    dispatch(getWishlistApi());
   };
 
   // const handleRatingChange = (event) => {
@@ -133,7 +135,6 @@ const Details = ({ item }) => {
     );
   };
   const navigate = useNavigate();
-
 
   return (
     <div>

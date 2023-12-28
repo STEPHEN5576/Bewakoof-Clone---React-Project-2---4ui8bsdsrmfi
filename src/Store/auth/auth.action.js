@@ -6,6 +6,7 @@ import {
   AUTH_SIGN_IN_ERROR,
   AUTH_SIGN_OUT,
 } from "./auth.types";
+import { useNavigate } from "react-router-dom";
 
 const { projectId } = config;
 
@@ -39,6 +40,8 @@ export const loginAPI = (creds) => async (dispatch) => {
         type: AUTH_SIGN_IN_SUCCESS,
         payload: data,
       });
+      const navigate = useNavigate();
+      navigate("/");
     }
 
     return data.message;
@@ -58,7 +61,7 @@ export const signupAPI = (user) => async (dispatch) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "projectId": projectId,
+          projectId: projectId,
         },
         body: JSON.stringify({
           name: user.name,
@@ -79,6 +82,10 @@ export const signupAPI = (user) => async (dispatch) => {
         type: AUTH_SIGN_IN_SUCCESS,
         payload: data,
       });
+
+      // Check if it's a signup (not a login), then navigate
+      const navigate = useNavigate();
+      navigate("/login");
     }
 
     return data.message;

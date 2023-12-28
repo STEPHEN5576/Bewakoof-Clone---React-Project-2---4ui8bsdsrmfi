@@ -1,6 +1,7 @@
 .Login {
   display: flex;
-  height: 90vh;
+  /* height: 90vh; */
+  height: auto;
 }
 .Login > div {
   flex: 1;

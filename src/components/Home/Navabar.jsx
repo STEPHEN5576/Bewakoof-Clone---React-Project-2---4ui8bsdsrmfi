@@ -13,6 +13,7 @@ import { Store } from "../../Store";
 import { AUTH_SIGN_OUT } from "../../Store/auth/auth.types";
 import { setInputValue } from "../../Store/searchState/search.action";
 import { fetchClothes } from "../../Store/SearchCatagories/Clothes.actions";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 // import SearchSection from "./SearchSect/SearchSection";
 const Navabar = ({ inputValue, updateInputValue }) => {
@@ -72,6 +73,10 @@ const Navabar = ({ inputValue, updateInputValue }) => {
   };
 
   console.log("inputvalue", inputValue);
+  console.log(
+    "Subcategories:",
+    clothes.filter((item) => item.subCategory)
+  );
 
   useEffect(() => {
     const url =
@@ -123,7 +128,7 @@ const Navabar = ({ inputValue, updateInputValue }) => {
           </div>
         </div>
       </div>
-      <div
+      {/* <div
         style={{
           backgroundColor: "white",
           borderBottom: "1px solid",
@@ -131,13 +136,12 @@ const Navabar = ({ inputValue, updateInputValue }) => {
           paddingTop: "15px",
           display: "flex",
           alignContent: "center",
-          // justifyContent: "space-between",
         }}
-      >
-        <div className={styles.bottom}>
-          <Navbar bg="white" expand="lg">
-            <Container fluid>
-              <Nav
+      > */}
+      <div className="bottom col-lg-12 row d-flex align-items-center justify-content-center">
+        {/* <Navbar bg="white" expand="lg"> */}
+        {/* <Container fluid> */}
+        {/* <Nav
                 className={`me-auto my-2 my-lg-0 ${styles.navlinks}`}
                 style={{
                   display: "flex",
@@ -145,27 +149,30 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                   width: "100%",
                 }}
                 navbarScroll
-              >
-                <Navbar.Brand onClick={() => navigate("/")}>
-                  <img
-                    className={styles.logo}
-                    src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"
-                    alt=""
-                    style={{ display: "flex", alignItems: "center" }}
-                  />
-                </Navbar.Brand>
-                {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
-                <Navbar.Collapse
+              > */}
+        {/* <div className="col-lg-12"></div> */}
+        <div className="col-lg-3">
+          {/* <Navbar.Brand
+              onClick={() => navigate("/")}
+              className={styles.brand}
+            > */}
+          <img
+            className={styles.logo}
+            src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"
+            alt=""
+            // style={{ display: "flex", alignItems: "center" }}
+            onClick={() => navigate("/")}
+          />
+          {/* </Navbar.Brand> */}
+        </div>
+
+        {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
+
+        {/* <Navbar.Collapse
                   id="navbarScroll"
-                  style={{
-                    display: "flex",
-                    alignContent: "baseline",
-                    marginBottom: "10px",
-                    justifyContent: "space-between",
-                    width: "70%",
-                  }}
-                >
-                  {/* <Nav
+                  className={styles.nava}
+                > */}
+        {/* <Nav
                   className={`me-auto my-2 my-lg-0 ${styles.navlinks}`}
                   style={{
                     display: "flex",
@@ -173,105 +180,116 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                   }}
                   navbarScroll
                 > */}
-                  <Nav.Link
-                    className={styles.navlinks}
-                    style={{
-                      marginRight: "22px",
-                      //  marginLeft: "20%"
-                    }}
-                    onClick={() => navigate("/mens")}
-                  >
-                    Men
-                  </Nav.Link>
-                  <Nav.Link
-                    className={styles.navlinks}
-                    style={{ marginRight: "22px" }}
-                    onClick={() => navigate("/womens")}
-                  >
-                    Women
-                  </Nav.Link>
-                  <Nav.Link
-                    className={styles.navlinks}
-                    style={{ marginRight: "22px" }}
-                  >
-                    Mobile Covers
-                  </Nav.Link>
-                  <Form className={styles.Search} onSubmit={handleSearchSubmit}>
-                    <div className={styles.searchContainer}>
-                      <FaSearch
-                        className={styles.searchIcon}
-                        onClick={handleSearchSubmit}
-                      />
-                      <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        id="searchInput"
-                        className="me-2"
-                        aria-label="Search"
-                        onChange={handleSearch}
-                        onKeyDown={handleKeyPress}
-                      />
-                    </div>
-                    {/* Display suggestions */}
-                    {suggestions.length > 0 && (
-                      <ul
-                        className={styles.suggestionsList}
-                        id="suggestionsList"
-                      >
-                        {suggestions.map((item, index) => (
-                          <li
-                            key={index}
-                            onClick={() =>
-                              handleSelectSuggestion(item.name, item._id)
-                            }
-                          >
-                            <p>{item.name}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </Form>
-
-                  <Nav.Link
-                    className={`${styles.navlinks} ms-auto`}
-                    style={{ marginRight: "21px" }}
-                    onClick={handleLoginClick}
-                  >
-                    {isAuthenticated ? "Logout" : "Login"}
-                  </Nav.Link>
-                  <Nav.Link className={styles.navlinks}>
-                    <BsHeart
-                      style={{ fontSize: "25px", marginRight: "22px" }}
-                      onClick={() => navigate("/wishlist")}
-                    />
-                  </Nav.Link>
-                  <Nav.Link className={styles.navlinks}>
-                    <BsBagCheck
-                      style={{
-                        fontSize: "25px",
-                        marginBottom: "5px",
-                        marginRight: "22px",
-                      }}
-                      onClick={() => navigate("/cart")}
-                    />
-                  </Nav.Link>
-                  <Nav.Link>
-                    <img
-                      className={styles.flag}
-                      src="https://media.istockphoto.com/vectors/flag-of-india-vector-id519611160?k=20&m=519611160&s=170667a&w=0&h=JOCO7AChggIcda8uslrXXXt90mL6gylVXZVu-RipZxg="
-                      alt=""
-                      style={{
-                        fontSize: "25px",
-                        marginBottom: "5px",
-                      }}
-                    />
-                  </Nav.Link>
-                </Navbar.Collapse>
-              </Nav>
-            </Container>
-          </Navbar>
+        <div className="col-lg-4  d-flex align-items-center">
+          <div
+            // className={styles.navlinks}
+            style={{
+              marginRight: "22px",
+              marginLeft: "50px",
+            }}
+            onClick={() => navigate("/mens")}
+          >
+            Men
+          </div>
+          <div
+            // className={styles.navlinks}
+            style={{ marginRight: "22px" }}
+            onClick={() => navigate("/womens")}
+          >
+            Women
+          </div>
+          <div
+            // className={styles.navlinks}
+            // id={styles.navlinkss}
+            style={{ marginRight: "22px" }}
+            onClick={() => navigate("/comingsoon")}
+          >
+            Mobile Covers
+          </div>
         </div>
+
+        <div className="col-lg-4  d-flex align-items-center">
+          <Form className={styles.Search} onSubmit={handleSearchSubmit}>
+            <div className={styles.searchContainer}>
+              <FaSearch
+                className={styles.searchIcon}
+                onClick={handleSearchSubmit}
+              />
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                id="searchInput"
+                // className="me-2"
+                // aria-label="Search"
+                size="md"
+                onChange={handleSearch}
+                onKeyDown={handleKeyPress}
+              />
+            </div>
+            {/* Display suggestions */}
+            {suggestions.length > 0 && (
+              <ul className={styles.suggestionsList} id="suggestionsList">
+                {suggestions.map((item, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleSelectSuggestion(item.name, item._id)}
+                  >
+                    <p>{item.name}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Form>
+
+          <Nav.Link
+            // className={`${styles.navlinks} ms-auto`}
+            style={{ marginRight: "21px", marginLeft: "20px" }}
+            onClick={handleLoginClick}
+          >
+            {isAuthenticated ? "Logout" : "Login"}
+          </Nav.Link>
+          <Nav.Link
+          // className={styles.navlinks}
+          >
+            <BsHeart
+              style={{
+                fontSize: "25px",
+                marginRight: "22px",
+                // marginLeft: "20px",
+              }}
+              onClick={() => navigate("/wishlist")}
+            />
+          </Nav.Link>
+          <Nav.Link
+          // className={styles.navlinks}
+          >
+            <BsBagCheck
+              style={{
+                fontSize: "25px",
+                marginBottom: "5px",
+                marginRight: "22px",
+              }}
+              onClick={() => navigate("/cart")}
+            />
+          </Nav.Link>
+          <Nav.Link>
+            <img
+              className={styles.flag}
+              src="https://media.istockphoto.com/vectors/flag-of-india-vector-id519611160?k=20&m=519611160&s=170667a&w=0&h=JOCO7AChggIcda8uslrXXXt90mL6gylVXZVu-RipZxg="
+              alt=""
+              style={{
+                fontSize: "25px",
+                marginBottom: "5px",
+              }}
+            />
+          </Nav.Link>
+        </div>
+        {/* </Navbar.Collapse> */}
+        {/* </Nav> */}
+        {/* </Container> */}
+        {/* </Navbar> */}
       </div>
+      {/* </div> */}
     </div>
   );
 };

@@ -33,10 +33,10 @@ export const CartReducer = (state = initialState, { type, payload }) => {
       };
     }
     case ADD_TO_CART: {
-      const updatedCart = [...state.cart, payload];
+      // const updatedCart = [...state.cart, payload];
 
       // Update local storage with the new cart data
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      // localStorage.setItem("cart", JSON.stringify(updatedCart));
       return {
         ...state,
         cart: [...state.cart, payload],

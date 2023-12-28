@@ -3,7 +3,19 @@
   grid-template-columns: repeat(3, 1fr);
   width: 75%;
   margin: 0px auto;
+  /* margin: 0; */
 }
 .main {
   text-align: center;
+  width: 100%;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 410px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    /* margin: 0px auto; */
+    margin: 0;
+  }
 }

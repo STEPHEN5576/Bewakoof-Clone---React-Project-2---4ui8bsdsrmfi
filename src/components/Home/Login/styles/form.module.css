@@ -11,6 +11,19 @@
 }
 .Form {
   padding: 0px 20%;
+  justify-content: center;
+}
+.main {
+  align-items: center;
+}
+.group {
+  display: grid;
+  justify-content: center;
+  /* width: 100%; */
+}
+.inputform {
+  width: 250px;
+  text-align: center;
 }
 .Button {
   background-color: #47a5a9 !important;

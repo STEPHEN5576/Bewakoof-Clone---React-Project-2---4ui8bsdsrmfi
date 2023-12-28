@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Address from "./Address";
+import styles from "./styles/Add.module.css";
+
 
 function Modals({ show, handleClose }) {
   return (
@@ -13,10 +15,10 @@ function Modals({ show, handleClose }) {
         onHide={handleClose}
       >
         <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">
+          <Modal.Title id="example-modal-sizes-title-lg" className={styles.modaltitle}>
             Add Your Address
           </Modal.Title>
-        </Modal.Header>
+        </Modal.Header> 
         <Modal.Body>
           <Address handleClose={handleClose} />
         </Modal.Body>

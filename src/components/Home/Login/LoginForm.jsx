@@ -29,7 +29,7 @@ const LoginForm = ({ onSignupClick }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginAPI(form));
+    dispatch(loginAPI(form, { isLogin: true }));
   };
 
   const handleClose = () => {
@@ -48,24 +48,21 @@ const LoginForm = ({ onSignupClick }) => {
         <h5>for Latest trends, exciting offers and everything Bewakoof!</h5>
       </div>
       <div className={styles.Form}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group
-            className="mb-4"
-            controlId="formBasicEmail"
-          >
+        <Form onSubmit={handleSubmit} className={styles.main}>
+          <Form.Group controlId="formBasicEmail" className={styles.group}>
             <Form.Control
               type="email"
               placeholder="Enter email"
-              className="p-3"
+              className={styles.inputform}
               onChange={handleChange}
               name="email"
               required
             />
           </Form.Group>
 
-          <Form.Group className="mb-4" controlId="formBasicPassword">
+          <Form.Group controlId="formBasicPassword" className={styles.group}>
             <Form.Control
-              className="p-3"
+              className={styles.inputform}
               type="password"
               placeholder="Password"
               onChange={handleChange}

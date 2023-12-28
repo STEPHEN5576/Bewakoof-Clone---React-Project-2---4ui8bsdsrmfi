@@ -28,6 +28,16 @@ const Table = () => {
     handleTotal();
   }, [cart2]);
 
+  if (cart2.some((item) => item.items.length === 0)) {
+    return (
+      <div className={styles.Empty}>
+        <h3 style={{ textAlign: "center", marginTop: "30px" }}>
+          No Items to show
+        </h3>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Modals show={show} handleClose={handleClose} />

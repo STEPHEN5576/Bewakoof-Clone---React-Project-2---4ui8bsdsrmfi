@@ -10,6 +10,7 @@ import {
 } from "./wishlist.types";
 
 const initialState = {
+  addedwishlist: [],
   wishlist: [],
   loading: false,
   error: null,
@@ -24,6 +25,7 @@ const wishlistReducer = (state = initialState, action) => {
       };
 
     case GET_WISHLIST_ITEMS:
+      console.log("action.payload", action.payload);
       return {
         ...state,
         wishlist: action.payload,
@@ -32,9 +34,10 @@ const wishlistReducer = (state = initialState, action) => {
       };
 
     case ADD_TO_WISHLIST:
+      console.log("action.payload", action.payload);
       return {
         ...state,
-        wishlist: [...state.wishlist, action.payload],
+        addedwishlist: [...state.wishlist, action.payload],
         loading: false,
         error: null,
       };

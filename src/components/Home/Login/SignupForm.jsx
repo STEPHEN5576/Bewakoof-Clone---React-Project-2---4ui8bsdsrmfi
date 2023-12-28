@@ -29,7 +29,7 @@ const SignupForm = () => {
     // Add additional validation logic if needed
 
     // Dispatch the signup action
-    dispatch(signupAPI(form));
+    dispatch(signupAPI(form, { isLogin: false }));
   };
 
   return (
@@ -39,32 +39,32 @@ const SignupForm = () => {
         <h5>for Latest trends, exciting offers and everything Bewakoof!</h5>
       </div>
       <div className={styles.Form}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-4" controlId="formBasicName">
+        <Form onSubmit={handleSubmit} className={styles.main}>
+          <Form.Group className={styles.group} controlId="formBasicName">
             <Form.Control
               type="text"
               placeholder="Enter your name"
-              className="p-3"
+              className={styles.inputform}
               onChange={handleChange}
               name="name"
               required
             />
           </Form.Group>
 
-          <Form.Group className="mb-4" controlId="formBasicEmail">
+          <Form.Group className={styles.group} controlId="formBasicEmail">
             <Form.Control
               type="email"
               placeholder="Enter email"
-              className="p-3"
+              className={styles.inputform}
               onChange={handleChange}
               name="email"
               required
             />
           </Form.Group>
 
-          <Form.Group className="mb-4" controlId="formBasicPassword">
+          <Form.Group className={styles.group} controlId="formBasicPassword">
             <Form.Control
-              className="p-3"
+              className={styles.inputform}
               type="password"
               placeholder="Password"
               onChange={handleChange}
@@ -73,9 +73,12 @@ const SignupForm = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-4" controlId="formBasicConfirmPassword">
+          <Form.Group
+            className={styles.group}
+            controlId="formBasicConfirmPassword"
+          >
             <Form.Control
-              className="p-3"
+              className={styles.inputform}
               type="password"
               placeholder="Confirm Password"
               onChange={handleChange}

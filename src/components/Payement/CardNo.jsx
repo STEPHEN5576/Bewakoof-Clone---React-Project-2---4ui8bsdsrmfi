@@ -27,7 +27,7 @@ const CardNo = () => {
   };
   const handleClose = () => {
     setShow(false);
-    navigate("/categories");
+    navigate("/");
   };
 
   return (

@@ -6,12 +6,15 @@
   padding: 20px;
   padding-bottom: 0px;
   z-index: 1;
+  text-align: center;
+  margin-right: auto;
 }
 .container > div {
   flex: 1;
 }
 .container > div:nth-child(4) {
   flex: 2;
+  margin-right: 40px;
 }
 .container li {
   list-style-type: none;
@@ -91,6 +94,8 @@
 @media only screen and (min-width: 481px) and (max-width: 800px) {
   .container {
     width: 100%;
+    justify-content: center;
+    margin-right: 500px;
   }
   .container li {
     font-size: 10px;
@@ -139,9 +144,14 @@
 }
 @media only screen and (min-width: 0px) and (max-width: 480px) {
   .container {
-    width: 100%;
+    /* margin-right: 10px; */
+    width: 80%;
+    justify-content: center;
+    /* padding-right: 100px; */
+    margin-right: 80px;
   }
   .container li {
+    justify-content: center;
     font-size: 10px;
 
     padding: 2px 0px;
@@ -154,7 +164,7 @@
     display: none;
   }
   .container2 {
-    width: 100%;
+    width: 80%;
     padding: 10px;
   }
   .container2 p {
