@@ -1,0 +1,216 @@
+.profilePage {
+  margin: 0 auto 30px;
+}
+.clearfix:after,
+.clearfix:before,
+.container-fluid:after,
+.container-fluid:before,
+.container:after,
+.container:before,
+.row:after,
+.row:before {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.container-fluid:after,
+.container:after,
+.row:after {
+  clear: both;
+}
+
+.profilePage .custmPadding {
+  padding: 0 75px;
+}
+.backtoListing {
+  float: left;
+  width: 100%;
+  margin-top: 35px;
+}
+.backtoListing a {
+  float: left;
+  width: 100%;
+  margin-bottom: 40px;
+  letter-spacing: 0.2px;
+  color: #51cccc;
+  font-family: montserrat-regular, sans-serif;
+  font-size: 1em;
+}
+.backtoListing .icon_previous {
+  float: left;
+  margin-right: 7.5px;
+  font-size: 0.9em;
+}
+
+[class*=" icon_"],
+[class*="icon_"] {
+  font-family: icomoon !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.websiteMyacTitle {
+  float: left;
+  width: 100%;
+  font-family: montserrat-bold, sans-serif;
+  font-size: 2em;
+  color: #181818;
+}
+.backtoListing hr {
+  float: left;
+  width: 100%;
+  margin: 15px 0 50px;
+  height: 2px;
+  max-width: 100px;
+  background: #fdd835;
+}
+hr {
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  border-style: inset;
+  border-width: 0;
+}
+hr,
+ul {
+  display: block;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+.accProfileForm {
+  max-width: 400px;
+  width: 100%;
+}
+
+element.style {
+  margin-bottom: 60px;
+}
+.xgroup {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 45px;
+}
+.xgroup input:focus ~ label,
+.xgroup input:not([value=""]) ~ label {
+  top: -10px;
+  font-size: 11px;
+}
+.xgroup label {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.5;
+  color: #181818;
+  position: absolute;
+  left: 0;
+  top: 7px;
+  pointer-events: none;
+  transition: all 0.1s ease;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+.xgroup input,
+.xgroup select {
+  width: 100%;
+  height: 29px;
+  padding: 5px 0;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #bcbcbc;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  display: block;
+  -webkit-appearance: none;
+  line-height: normal;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+input {
+  line-height: normal;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+#form {
+  display: flex;
+}
+
+.xgroup {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 45px;
+}
+.xgroup .inputHelp {
+  display: block;
+  margin: 15px 0 -15px;
+  color: #51cccc;
+  font-family: montserrat-regular, sans-serif;
+  font-size: 14px;
+}
+.clearLeft {
+  clear: left;
+}
+
+/* .noPdXs {
+  position: absolute;
+  top: 0px;
+} */
+/* .col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+} */

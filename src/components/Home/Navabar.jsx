@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { CgProfile } from "react-icons/cg";
 import { connect } from "react-redux";
 import { BsHeart, BsBagCheck } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
@@ -247,6 +248,18 @@ const Navabar = ({ inputValue, updateInputValue }) => {
             onClick={handleLoginClick}
           >
             {isAuthenticated ? "Logout" : "Login"}
+          </Nav.Link>
+          <Nav.Link
+          // className={styles.navlinks}
+          >
+            <CgProfile
+              style={{
+                fontSize: "25px",
+                marginRight: "22px",
+                // marginLeft: "20px",
+              }}
+              onClick={() => navigate("/wishlist")}
+            />
           </Nav.Link>
           <Nav.Link
           // className={styles.navlinks}

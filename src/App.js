@@ -15,6 +15,8 @@ import WishList from "./Pages/WishList";
 import Payment from "./Pages/Payment";
 import "bootstrap/dist/css/bootstrap.css";
 import ComingSoonpage from "./Pages/ComingSoonpage";
+import MyAccount from "./Pages/MyAccount";
+import MyProfile from "./Pages/MyProfile";
 function App() {
   return (
     <div className="App">
@@ -51,6 +53,8 @@ function App() {
           }
         />
         <Route path="/comingsoon" element={<ComingSoonpage />} />
+        <Route path="/myAccount" element={<MyAccount />} />
+        <Route path="/myProfile" element={<MyProfile />} />
       </Routes>
       <Footer />
     </div>
