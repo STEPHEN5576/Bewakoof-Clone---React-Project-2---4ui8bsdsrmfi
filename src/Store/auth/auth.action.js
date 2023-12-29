@@ -5,13 +5,16 @@ import {
   AUTH_SIGN_IN_SUCCESS,
   AUTH_SIGN_IN_ERROR,
   AUTH_SIGN_OUT,
+  AUTH_LOGIN_IN_LOADING,
+  AUTH_LOGIN_SUCCESS,
+  AUTH_SIGN_UP_SUCCESS,
 } from "./auth.types";
 import { useNavigate } from "react-router-dom";
 
 const { projectId } = config;
 
 export const loginAPI = (creds) => async (dispatch) => {
-  dispatch({ type: AUTH_SIGN_IN_LOADING });
+  dispatch({ type: AUTH_LOGIN_IN_LOADING });
 
   try {
     const response = await fetch(
@@ -37,7 +40,7 @@ export const loginAPI = (creds) => async (dispatch) => {
       dispatch({ type: AUTH_SIGN_IN_ERROR, error: data.message });
     } else {
       dispatch({
-        type: AUTH_SIGN_IN_SUCCESS,
+        type: AUTH_LOGIN_SUCCESS,
         payload: data,
       });
       const navigate = useNavigate();
@@ -73,19 +76,19 @@ export const signupAPI = (user) => async (dispatch) => {
     );
 
     const data = await response.json();
-
+console.error("Signup  Sucess");
     if (!response.ok) {
       console.error("Signup API Error:", data.message);
       dispatch({ type: AUTH_SIGN_IN_ERROR, error: data.message });
     } else {
       dispatch({
-        type: AUTH_SIGN_IN_SUCCESS,
+        type: AUTH_SIGN_UP_SUCCESS,
         payload: data,
       });
 
       // Check if it's a signup (not a login), then navigate
       const navigate = useNavigate();
-      navigate("/login");
+      navigate("/");
     }
 
     return data.message;

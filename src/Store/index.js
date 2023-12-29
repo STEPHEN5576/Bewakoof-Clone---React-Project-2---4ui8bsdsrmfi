@@ -2,7 +2,8 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import categoriesReducer from "./catagories/catagories.reducer";
-import authReducer from "./auth/auth.reducers";
+// import authReducer from "./auth/auth.reducers";
+import { authReducer } from "./auth/auth.reducers";
 import productReducer from "./Products/product.reducer";
 import { CartReducer } from "./Card/Card.reducer";
 import searchReducer from "./searchState/search.reducer";

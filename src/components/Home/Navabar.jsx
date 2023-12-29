@@ -21,6 +21,7 @@ const Navabar = ({ inputValue, updateInputValue }) => {
   const navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => state.auth.data);
   // const [inputValue, setInputValue] = useState("");
+  console.log("isAuthenticated", isAuthenticated);
   const dispatch = useDispatch();
   const [suggestions, setSuggestions] = useState([]);
 
@@ -249,6 +250,7 @@ const Navabar = ({ inputValue, updateInputValue }) => {
           >
             {isAuthenticated ? "Logout" : "Login"}
           </Nav.Link>
+
           <Nav.Link
           // className={styles.navlinks}
           >
@@ -258,7 +260,7 @@ const Navabar = ({ inputValue, updateInputValue }) => {
                 marginRight: "22px",
                 // marginLeft: "20px",
               }}
-              onClick={() => navigate("/wishlist")}
+              onClick={() => navigate("/myAccount")}
             />
           </Nav.Link>
           <Nav.Link

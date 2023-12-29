@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { signupAPI } from "../../../Store/auth/auth.action";
-
+import { useNavigate } from "react-router";
 const SignupForm = () => {
   const [form, setForm] = useState({
     name: "", // Add name field
@@ -12,7 +12,7 @@ const SignupForm = () => {
     password: "",
     confirmPassword: "",
   });
-
+const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -30,6 +30,7 @@ const SignupForm = () => {
 
     // Dispatch the signup action
     dispatch(signupAPI(form, { isLogin: false }));
+    navigate("/");
   };
 
   return (

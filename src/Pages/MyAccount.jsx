@@ -22,7 +22,12 @@ function MyAccount() {
         <div className="accOptionsBox">
           <div className="container custmPadding">
             <div className="clearfix accOptions">
-              <div className="accOptionsInner">
+              <div
+                className="accOptionsInner"
+                onClick={() => {
+                  navigate("/comingsoon");
+                }}
+              >
                 <a aria-current="false" id="testMyOrders">
                   <div id="acc">
                     <span className="accHead">My Orders</span>
@@ -34,29 +39,51 @@ function MyAccount() {
                 </a>
               </div>
               <div className="accOptionsInner">
-                <a aria-current="false" id="testMyOrders">
+                <a
+                  aria-current="false"
+                  id="testMyOrders"
+                  onClick={() => {
+                    navigate("/comingsoon");
+                  }}
+                >
                   <div id="acc">
                     <span className="accHead">My Payment</span>
                     <i className="icon_next">
                       <MdNavigateNext />
                     </i>
                   </div>
-                  <span className="accNote">View, modify and Payment methods</span>
+                  <span className="accNote">
+                    View, modify and Payment methods
+                  </span>
                 </a>
               </div>
               <div className="accOptionsInner">
-                <a aria-current="false" id="testMyOrders">
+                <a
+                  aria-current="false"
+                  id="testMyOrders"
+                  onClick={() => {
+                    navigate("/comingsoon");
+                  }}
+                >
                   <div id="acc">
                     <span className="accHead">My Wallet</span>
                     <i className="icon_next">
                       <MdNavigateNext />
                     </i>
                   </div>
-                  <span className="accNote">bewakoof Wallet History and redeemed gift cards</span>
+                  <span className="accNote">
+                    bewakoof Wallet History and redeemed gift cards
+                  </span>
                 </a>
               </div>
               <div className="accOptionsInner">
-                <a aria-current="false" id="testMyOrders">
+                <a
+                  aria-current="false"
+                  id="testMyOrders"
+                  onClick={() => {
+                    navigate("/comingsoon");
+                  }}
+                >
                   <div id="acc">
                     <span className="accHead">My Address</span>
                     <i className="icon_next">
@@ -67,14 +94,22 @@ function MyAccount() {
                 </a>
               </div>
               <div className="accOptionsInner">
-                <a aria-current="false" id="testMyOrders">
+                <a
+                  aria-current="false"
+                  id="testMyOrders"
+                  onClick={() => {
+                    navigate("/myProfile");
+                  }}
+                >
                   <div id="acc">
                     <span className="accHead">My Profile</span>
                     <i className="icon_next">
                       <MdNavigateNext />
                     </i>
                   </div>
-                  <span className="accNote">Edit personal info, change password</span>
+                  <span className="accNote">
+                    Edit personal info, change password
+                  </span>
                 </a>
               </div>
             </div>
@@ -87,7 +122,9 @@ function MyAccount() {
                       <MdNavigateNext />
                     </i>
                   </div>
-                  <span className="accNote">Invite your friends and earn rewards</span>
+                  <span className="accNote">
+                    Invite your friends and earn rewards
+                  </span>
                 </a>
               </div>
             </div>
