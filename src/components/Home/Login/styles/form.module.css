@@ -19,10 +19,13 @@
 .group {
   display: grid;
   justify-content: center;
+  padding: 2.9px;
   /* width: 100%; */
 }
 .inputform {
-  width: 250px;
+  /* width: 250px; */
+  width: 455px !important;
+  height: 55px;
   text-align: center;
 }
 .Button {

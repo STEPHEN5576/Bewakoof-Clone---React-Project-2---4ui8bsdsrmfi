@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import styles from "./styles/Add.module.css";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { setAddress } from "../../Store/State/action";
+import { useDispatch } from "react-redux";
 
 const Address = ({ handleClose }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formValues, setFormValues] = useState({
-    name: "",
+    country: "India",
+    fullName: "", // Updated field name
     mobile: "",
-    pin: "",
+    zipCode: "", // Updated field name
     city: "",
     state: "",
-    address: "",
-    locality: "",
+    street: "", // Updated field name
+    areaLocality: "", // Updated field name
     landmark: "",
   });
 
@@ -23,7 +27,12 @@ const Address = ({ handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    const { street, city, state, country, zipCode } = formValues;
+    const addressData = { street, city, state, country, zipCode };
+
+    // Dispatch the setAddress action with the extracted addressData
+    dispatch(setAddress(addressData));
+    console.log("form", formValues);
     navigate("/payment");
   };
 
@@ -33,8 +42,14 @@ const Address = ({ handleClose }) => {
         <Form onSubmit={handleSubmit}>
           <div className={styles.Select}>
             <Form.Label>Select Your Country</Form.Label>
-            <select name="" id="">
+            <select
+              name="country"
+              id=""
+              value={formValues.country}
+              onChange={handleChange}
+            >
               <option value="India">India</option>
+              <option value="USA">USA</option>
             </select>
           </div>
           <hr />
@@ -45,7 +60,7 @@ const Address = ({ handleClose }) => {
               type="text"
               placeholder="Your Full Name"
               required
-              name="name"
+              name="fullName" // Updated field name
               onChange={handleChange}
             />
           </Form.Group>
@@ -67,7 +82,7 @@ const Address = ({ handleClose }) => {
               type="text"
               placeholder="Pin code"
               required
-              name="pin"
+              name="zipCode" // Updated field name
               onChange={handleChange}
             />
           </Form.Group>
@@ -99,7 +114,7 @@ const Address = ({ handleClose }) => {
               type="text"
               placeholder="Flat no./Building, Street name"
               required
-              name="address"
+              name="street" // Updated field name
               onChange={handleChange}
             />
           </Form.Group>
@@ -109,7 +124,7 @@ const Address = ({ handleClose }) => {
               type="text"
               placeholder="Area/Locality"
               required
-              name="locality"
+              name="areaLocality" // Updated field name
               onChange={handleChange}
             />
           </Form.Group>

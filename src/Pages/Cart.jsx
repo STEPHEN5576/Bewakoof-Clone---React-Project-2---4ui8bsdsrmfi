@@ -16,6 +16,7 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getCartApi());
   }, []);
+  
   console.log(cart2);
   if (loading) {
     return (

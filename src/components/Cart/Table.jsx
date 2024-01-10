@@ -8,6 +8,8 @@ const Table = () => {
   const [total, setTotal] = useState(0);
   const [show, setShow] = useState(false);
   const { cart2 } = useSelector((state) => state.Cart);
+  const { address } = useSelector((state) => state.states);
+  console.log("address", address);
 
   const handleTotal = () => {
     setTotal(

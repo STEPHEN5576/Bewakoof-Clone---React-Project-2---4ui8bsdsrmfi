@@ -25,7 +25,7 @@ function MyAccount() {
               <div
                 className="accOptionsInner"
                 onClick={() => {
-                  navigate("/comingsoon");
+                  navigate("/oder");
                 }}
               >
                 <a aria-current="false" id="testMyOrders">

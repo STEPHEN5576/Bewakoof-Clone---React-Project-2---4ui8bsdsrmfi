@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import ComingSoonpage from "./Pages/ComingSoonpage";
 import MyAccount from "./Pages/MyAccount";
 import MyProfile from "./Pages/MyProfile";
+import Oder from "./Pages/Oder";
 function App() {
   return (
     <div className="App">
@@ -47,14 +48,30 @@ function App() {
         <Route
           path="/payment"
           element={
-            // <RequiredAuth>
-            // </RequiredAuth>
-            <Payment />
+            <RequiredAuth>
+              <Payment />
+            </RequiredAuth>
           }
         />
         <Route path="/comingsoon" element={<ComingSoonpage />} />
+
         <Route path="/myAccount" element={<MyAccount />} />
-        <Route path="/myProfile" element={<MyProfile />} />
+        <Route
+          path="/myProfile"
+          element={
+            <RequiredAuth>
+              <MyProfile />
+            </RequiredAuth>
+          }
+        />
+        <Route
+          path="/oder"
+          element={
+            <RequiredAuth>
+              <Oder />
+            </RequiredAuth>
+          }
+        />
       </Routes>
       <Footer />
     </div>

@@ -4,9 +4,15 @@ import Form from "react-bootstrap/Form";
 import SuccessModal from "../Home/Login/Modal";
 import styles from "./styles/nav.module.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { submitOrder } from "../../Store/State/action";
 
 const CardNo = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { address } = useSelector((state) => state.states);
+  const { cart2 } = useSelector((state) => state.Cart);
+  console.log(cart2);
   const [formValues, setFormValues] = useState({
     name: "",
     card: "",
@@ -20,11 +26,37 @@ const CardNo = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // const id = cart2[0]._id;
+  // console.log("id", id);
+
+  // const id = cart2.map((item) =>
+  //   item.items.map((productItem) => productItem._id)
+  // );
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShow(true);
-    console.log(formValues);
+
+    for (const item of cart2) {
+      for (const productItem of item.items) {
+        console.log("id", productItem.product);
+        const orderData = {
+          productId: productItem.product._id,
+          quantity: 1,
+          address,
+          // ...formValues,
+        };
+
+        // Dispatch the submitOrder action to make the API call
+        await dispatch(submitOrder(orderData));
+        setShow(true);
+        console.log(formValues);
+      }
+    }
+
+    // Now, all API calls have been made
+    // Additional logic if needed
   };
+
   const handleClose = () => {
     setShow(false);
     navigate("/");
@@ -37,8 +69,7 @@ const CardNo = () => {
         handleClose={handleClose}
         message={"Your Payment Was Successfully completed "}
       />
-      <Form onSubmit={handleSubmit}
-      className={styles.modelpayment}>
+      <Form onSubmit={handleSubmit} className={styles.modelpayment}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Card Number</Form.Label>
           <Form.Control

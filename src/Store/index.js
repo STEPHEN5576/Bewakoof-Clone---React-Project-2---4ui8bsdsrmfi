@@ -10,6 +10,7 @@ import searchReducer from "./searchState/search.reducer";
 import clothesReducer from "./SearchCatagories/Clothes.reducers";
 import wishlistReducer from "./wishlist/wishlist.reducer";
 import reviewReducer from "./review/review.reducer";
+import StateReducer from "./State/reducer";
 const rootReducer = combineReducers({
   categories: categoriesReducer,
   auth: authReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   clothes: clothesReducer,
   wishlist: wishlistReducer,
   review: reviewReducer,
+  states: StateReducer,
   // ... other reducers
 });
 

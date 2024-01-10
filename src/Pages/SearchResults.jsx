@@ -10,6 +10,9 @@ import { Circles } from "react-loader-spinner";
 const SearchResults = () => {
   const { inputValue } = useParams();
   const dispatch = useDispatch();
+  // const { clothes, loading, error } = useSelector((state) => state.clothes);
+  // const { data } = useSelector((state) => state.categories);
+  // const { data, loading, error } = useSelector((state) => state.product);
   const { clothes, loading, error } = useSelector((state) => state.clothes);
 
   useEffect(() => {
@@ -20,6 +23,8 @@ const SearchResults = () => {
       )
     );
   }, [dispatch]);
+
+  // console.log("searchapi", data);
 
   if (loading) {
     return (
