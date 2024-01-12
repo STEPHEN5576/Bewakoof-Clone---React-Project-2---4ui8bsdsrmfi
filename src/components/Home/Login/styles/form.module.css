@@ -95,10 +95,10 @@
   padding: 10px;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 410px) {
+@media only screen and (min-width: 0px) and (max-width: 325px) {
   .Header {
     text-align: center;
-    padding: 30px 10px;
+    padding: 50px 10px;
   }
   .Form {
     padding: 20px;
@@ -131,5 +131,55 @@
 
   .Foot > span {
     padding: 6px;
+  }
+  .inputform {
+    width: 272px !important;
+    /* width: 100% !important; */
+    height: 55px;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 326px) and (max-width: 426px) {
+  .Header {
+    text-align: center;
+    padding: 50px 10px;
+  }
+  .Form {
+    padding: 20px;
+  }
+  .Button {
+    padding: 12px !important;
+    font-size: 20px !important;
+  }
+  .auth {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+  }
+  .auth > button {
+    gap: 10px;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 6px;
+  }
+  .authButton {
+    gap: 10px;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 6px;
+  }
+  .Foot {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .Foot > span {
+    padding: 6px;
+  }
+  .inputform {
+    width: 330px !important;
+    /* width: 100% !important; */
+    height: 55px;
+    text-align: center;
   }
 }

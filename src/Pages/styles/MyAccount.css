@@ -183,3 +183,15 @@ a {
 /* .emptyMobImg {
   display: none;
 } */
+
+@media only screen and (min-width: 0px) and (max-width: 410px) {
+  .myaccBox .accOptions {
+    border-bottom: 1px solid #e6e6e6;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

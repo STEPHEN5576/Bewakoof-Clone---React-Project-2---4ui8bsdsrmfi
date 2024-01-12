@@ -16,7 +16,7 @@ const initialState = {
   error1: false,
 };
 
-console.log(orders);
+// console.log(orders);
 
 const StateReducer = (state = initialState, action) => {
   switch (action.type) {

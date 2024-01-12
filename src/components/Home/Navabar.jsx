@@ -116,79 +116,45 @@ const Navabar = () =>
       setSuggestions([]);
     };
 
-    return (
-      // <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      //   <a class="navbar-brand" href="#">
-      //     Navbar
-      //   </a>
-      //   <button
-      //     class="navbar-toggler"
-      //     type="button"
-      //     data-toggle="collapse"
-      //     data-target="#navbarSupportedContent"
-      //     aria-controls="navbarSupportedContent"
-      //     aria-expanded="false"
-      //     aria-label="Toggle navigation"
-      //   >
-      //     <span class="navbar-toggler-icon"></span>
-      //   </button>
+    const [isMenuVisible, setMenuVisible] = useState(false);
 
-      //   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      //     <ul class="navbar-nav mr-auto">
-      //       <li class="nav-item active">
-      //         <a class="nav-link" href="#">
-      //           Home <span class="sr-only">(current)</span>
-      //         </a>
-      //       </li>
-      //       <li class="nav-item">
-      //         <a class="nav-link" href="#">
-      //           Link
-      //         </a>
-      //       </li>
-      //       <li class="nav-item dropdown">
-      //         <a
-      //           class="nav-link dropdown-toggle"
-      //           href="#"
-      //           id="navbarDropdown"
-      //           role="button"
-      //           data-toggle="dropdown"
-      //           aria-haspopup="true"
-      //           aria-expanded="false"
-      //         >
-      //           Dropdown
-      //         </a>
-      //         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      //           <a class="dropdown-item" href="#">
-      //             Action
-      //           </a>
-      //           <a class="dropdown-item" href="#">
-      //             Another action
-      //           </a>
-      //           <div class="dropdown-divider"></div>
-      //           <a class="dropdown-item" href="#">
-      //             Something else here
-      //           </a>
-      //         </div>
-      //       </li>
-      //       <li class="nav-item">
-      //         <a class="nav-link disabled" href="#">
-      //           Disabled
-      //         </a>
-      //       </li>
-      //     </ul>
-      //     <form class="form-inline my-2 my-lg-0">
-      //       <input
-      //         class="form-control mr-sm-2"
-      //         type="search"
-      //         placeholder="Search"
-      //         aria-label="Search"
-      //       />
-      //       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      //         Search
-      //       </button>
-      //     </form>
-      //   </div>
-      // </nav>
+    const handleMenuClick = () => {
+      setMenuVisible(!isMenuVisible);
+    };
+
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        const menuIcon = document.getElementById("hambu");
+        const menu = document.getElementById("menu");
+
+        if (
+          menuIcon &&
+          menu &&
+          !menuIcon.contains(event.target) &&
+          !menu.contains(event.target)
+        ) {
+          setMenuVisible(false);
+        } else {
+          setMenuVisible(true);
+        }
+      };
+
+      document.addEventListener("click", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }, [isMenuVisible]);
+    const [firstName, setFirstName] = useState("");
+
+    useEffect(() => {
+      // Fetch values from local storage
+      const storedFirstName = localStorage.getItem("name");
+      // Set state with retrieved values
+      setFirstName(storedFirstName);
+    }, []);
+
+    return (
       <div className={styles.container}>
         <div style={{ backgroundColor: "#eeeeee" }}>
           <div className={styles.upper}>
@@ -214,10 +180,11 @@ const Navabar = () =>
           alignContent: "center",
         }}
       > */}
-        <div className="bottom col-lg-12 row d-flex align-items-center justify-content-center  p-1 ">
-          {/* <Navbar bg="white" expand="lg"> */}
-          {/* <Container fluid> */}
-          {/* <Nav
+        <div className={styles.firstnavbarssss}>
+          <div className="bottom col-lg-12 row d-flex align-items-center justify-content-center  p-1 ">
+            {/* <Navbar bg="white" expand="lg"> */}
+            {/* <Container fluid> */}
+            {/* <Nav
                 className={`me-auto my-2 my-lg-0 ${styles.navlinks}`}
                 style={{
                   display: "flex",
@@ -226,29 +193,29 @@ const Navabar = () =>
                 }}
                 navbarScroll
               > */}
-          {/* <div className="col-lg-12"></div> */}
-          <div className="col-lg-3">
-            {/* <Navbar.Brand
+            {/* <div className="col-lg-12"></div> */}
+            <div className="col-lg-3">
+              {/* <Navbar.Brand
               onClick={() => navigate("/")}
               className={styles.brand}
             > */}
-            <img
-              className={styles.logo}
-              src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"
-              alt=""
-              // style={{ display: "flex", alignItems: "center" }}
-              onClick={() => navigate("/")}
-            />
-            {/* </Navbar.Brand> */}
-          </div>
+              <img
+                className={styles.logo}
+                src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"
+                alt=""
+                // style={{ display: "flex", alignItems: "center" }}
+                onClick={() => navigate("/")}
+              />
+              {/* </Navbar.Brand> */}
+            </div>
 
-          {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
+            {/* <Navbar.Toggle aria-controls="navbarScroll" /> */}
 
-          {/* <Navbar.Collapse
+            {/* <Navbar.Collapse
                   id="navbarScroll"
                   className={styles.nava}
                 > */}
-          {/* <Nav
+            {/* <Nav
                   className={`me-auto my-2 my-lg-0 ${styles.navlinks}`}
                   style={{
                     display: "flex",
@@ -256,131 +223,407 @@ const Navabar = () =>
                   }}
                   navbarScroll
                 > */}
-          <div className="col-lg-4  d-flex align-items-center">
-            <div
-              // className={styles.navlinks}
-              style={{
-                marginRight: "22px",
-                marginLeft: "50px",
-              }}
-              onClick={() => navigate("/mens")}
-            >
-              Men
-            </div>
-            <div
-              // className={styles.navlinks}
-              style={{ marginRight: "22px" }}
-              onClick={() => navigate("/womens")}
-            >
-              Women
-            </div>
-            <div
-              // className={styles.navlinks}
-              // id={styles.navlinkss}
-              style={{ marginRight: "22px" }}
-              onClick={() => navigate("/comingsoon")}
-            >
-              Mobile Covers
-            </div>
-          </div>
-
-          <div className="col-lg-4  d-flex align-items-center">
-            <Form className={styles.Search} onSubmit={handleSearchSubmit}>
-              <div className={styles.searchContainer}>
-                <FaSearch
-                  className={styles.searchIcon}
-                  onClick={handleSearchSubmit}
-                />
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  id="searchInput"
-                  // className="me-2"
-                  // aria-label="Search"
-                  size="md"
-                  onChange={handleSearch}
-                  onKeyDown={handleKeyPress}
-                />
+            <div className="col-lg-4  d-flex align-items-center">
+              <div
+                // className={styles.navlinks}
+                style={{
+                  marginRight: "22px",
+                  marginLeft: "50px",
+                }}
+                onClick={() => navigate("/mens")}
+              >
+                Men
               </div>
-              {/* Display suggestions */}
-              {suggestions.length > 0 && (
-                <ul className={styles.suggestionsList} id="suggestionsList">
-                  {suggestions.map((item, index) => (
-                    <li
-                      key={index}
-                      onClick={() =>
-                        handleSelectSuggestion(item.name, item._id)
-                      }
-                    >
-                      <p>{item.name}</p>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Form>
+              <div
+                // className={styles.navlinks}
+                style={{ marginRight: "22px" }}
+                onClick={() => navigate("/womens")}
+              >
+                Women
+              </div>
+              <div
+                // className={styles.navlinks}
+                // id={styles.navlinkss}
+                style={{ marginRight: "22px" }}
+                onClick={() => navigate("/comingsoon")}
+              >
+                Mobile Covers
+              </div>
+            </div>
 
-            <Nav.Link
-              // className={`${styles.navlinks} ms-auto`}
-              style={{ marginRight: "21px", marginLeft: "20px" }}
-              onClick={handleLoginClick}
-            >
-              {isAuthenticated ? "Logout" : "Login"}
-            </Nav.Link>
+            <div className="col-lg-4  d-flex align-items-center">
+              <Form className={styles.Search} onSubmit={handleSearchSubmit}>
+                <div className={styles.searchContainer}>
+                  <FaSearch
+                    className={styles.searchIcon}
+                    onClick={handleSearchSubmit}
+                  />
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    id="searchInput"
+                    // className="me-2"
+                    // aria-label="Search"
+                    size="md"
+                    onChange={handleSearch}
+                    onKeyDown={handleKeyPress}
+                  />
+                </div>
+                {/* Display suggestions */}
+                {suggestions.length > 0 && (
+                  <ul className={styles.suggestionsList} id="suggestionsList">
+                    {suggestions.map((item, index) => (
+                      <li
+                        key={index}
+                        onClick={() =>
+                          handleSelectSuggestion(item.name, item._id)
+                        }
+                      >
+                        <p>{item.name}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </Form>
 
-            <Nav.Link
-            // className={styles.navlinks}
-            >
-              <CgProfile
-                style={{
-                  fontSize: "25px",
-                  marginRight: "22px",
-                  // marginLeft: "20px",
-                }}
-                onClick={() => navigate("/myAccount")}
-              />
-            </Nav.Link>
-            <Nav.Link
-            // className={styles.navlinks}
-            >
-              <BsHeart
-                style={{
-                  fontSize: "25px",
-                  marginRight: "22px",
-                  // marginLeft: "20px",
-                }}
-                onClick={() => navigate("/wishlist")}
-              />
-            </Nav.Link>
-            <Nav.Link
-            // className={styles.navlinks}
-            >
-              <BsBagCheck
-                style={{
-                  fontSize: "25px",
-                  marginBottom: "5px",
-                  marginRight: "22px",
-                }}
-                onClick={() => navigate("/cart")}
-              />
-            </Nav.Link>
-            <Nav.Link>
-              <img
-                className={styles.flag}
-                src="https://media.istockphoto.com/vectors/flag-of-india-vector-id519611160?k=20&m=519611160&s=170667a&w=0&h=JOCO7AChggIcda8uslrXXXt90mL6gylVXZVu-RipZxg="
-                alt=""
-                style={{
-                  fontSize: "25px",
-                  marginBottom: "5px",
-                }}
-              />
-            </Nav.Link>
+              <Nav.Link
+                // className={`${styles.navlinks} ms-auto`}
+                style={{ marginRight: "21px", marginLeft: "20px" }}
+                onClick={handleLoginClick}
+              >
+                {isAuthenticated ? "Logout" : "Login"}
+              </Nav.Link>
+
+              <Nav.Link
+              // className={styles.navlinks}
+              >
+                <CgProfile
+                  style={{
+                    fontSize: "25px",
+                    marginRight: "22px",
+                    // marginLeft: "20px",
+                  }}
+                  onClick={() => navigate("/myAccount")}
+                />
+              </Nav.Link>
+              <Nav.Link
+              // className={styles.navlinks}
+              >
+                <BsHeart
+                  style={{
+                    fontSize: "25px",
+                    marginRight: "22px",
+                    // marginLeft: "20px",
+                  }}
+                  onClick={() => navigate("/wishlist")}
+                />
+              </Nav.Link>
+              <Nav.Link
+              // className={styles.navlinks}
+              >
+                <BsBagCheck
+                  style={{
+                    fontSize: "25px",
+                    marginBottom: "5px",
+                    marginRight: "22px",
+                  }}
+                  onClick={() => navigate("/cart")}
+                />
+              </Nav.Link>
+              <Nav.Link>
+                <img
+                  className={styles.flag}
+                  src="https://media.istockphoto.com/vectors/flag-of-india-vector-id519611160?k=20&m=519611160&s=170667a&w=0&h=JOCO7AChggIcda8uslrXXXt90mL6gylVXZVu-RipZxg="
+                  alt=""
+                  style={{
+                    fontSize: "25px",
+                    marginBottom: "5px",
+                  }}
+                />
+              </Nav.Link>
+            </div>
+            {/* </Navbar.Collapse> */}
+            {/* </Nav> */}
+            {/* </Container> */}
+            {/* </Navbar> */}
           </div>
-          {/* </Navbar.Collapse> */}
-          {/* </Nav> */}
-          {/* </Container> */}
-          {/* </Navbar> */}
         </div>
         {/* </div> */}
+        <div
+          className={styles.mHeaderDiv}
+          style={{
+            position: "fixed",
+            // backgroundColor: "red",
+            top: "0px",
+            zIndex: "9999",
+            width: "100%",
+          }}
+        >
+          <div className={styles.mHeader}>
+            <label htmlFor="hambu" className={styles.mLogoDiv}>
+              <img
+                src="https://images.bewakoof.com/web/ic-web-head-hamburger.svg"
+                className="mMenuBtn"
+                onClick={handleMenuClick}
+              />
+            </label>
+            <input
+              type="checkbox"
+              id="hambu"
+              className={styles.inputcheckbox}
+            />
+
+            <div className={styles.mActionMenu}>
+              <span>
+                <img
+                  src="https://images.bewakoof.com/web/ic-web-head-bwk-primary-logo-eyes.svg"
+                  alt="bewakoofPic"
+                  style={{
+                    height: "18px",
+                    margin: "16px 10px",
+                    width: "40px",
+                  }}
+                  onClick={() => navigate("/")}
+                />
+              </span>
+            </div>
+
+            <div
+              id="menu"
+              className={isMenuVisible ? styles.mMenu : styles.mMenu2}
+            >
+              <label className={styles.sideMenuHolder}>
+                <div className={styles.mMenuHead}>
+                  <div className={styles.welcomeHeader}>
+                    <h5 className={styles.welcomeGuest}>Hello {firstName}</h5>
+                  </div>
+                </div>
+                <div className={styles.mMainMenu}>
+                  <div>
+                    <div>
+                      <div
+                        className="menuListWrpr"
+                        style={{ backgroundColor: "rgb(255, 255, 255)" }}
+                      >
+                        <p className={styles.menuHeading}>SHOP IN</p>
+                        <ul> 
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/Mens");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              Men<div className="lazyload-placeholder"></div>
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/womens");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              Women<div className="lazyload-placeholder"></div>
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/search/trending");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              Designs of the Week
+                              <div class="lazyload-placeholder"></div>
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/comingsoon");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              Mobile Covers
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div
+                        class="menuListWrpr"
+                        style={{ backgroundColor: "rgb(243, 243, 243)" }}
+                      >
+                        <p className={styles.menuHeading}>MY PROFILE</p>
+                        <ul>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/myProfile");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              My Account
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/oder");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              My Orders
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/comingsoon");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              My Wallet
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                navigate("/wishlist");
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              My Wishlist
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div
+                        className="menuListWrpr"
+                        style={{ backgroundColor: "rgb(243, 243, 243)" }}
+                      >
+                        <p className={styles.menuHeading}>CONTACT US</p>
+                        <ul>
+                          <li className={styles.MenuListOption}>
+                            <a href="https://www.bewakoof.com/contact-us">
+                              Help &amp; Support
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a href="https://www.bewakoof.com/contact-us/feedback/give-us-feedback">
+                              Feedback &amp; Suggestions
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a href="https://www.bewakoof.com/campaign/bpartner">
+                              Become a Seller
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div
+                        className={styles.menuListWrpr}
+                        style={{ backgroundColor: "rgb(243, 243, 243)" }}
+                      >
+                        <p className={styles.menuHeading}>ABOUT US</p>
+                        <ul>
+                          <li className={styles.MenuListOption}>
+                            <a href="https://www.bewakoof.com/about-us/our-story">
+                              Our Story
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a href="https://www.bewakoof.com/fanbook-testimonial-reviews">
+                              Fanbook
+                            </a>
+                          </li>
+                          <li className={styles.MenuListOption}>
+                            <a href="https://www.bewakoof.com/blog/">Blog</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div
+                        class="menuListWrpr"
+                        style={{ backgroundColor: "rgb(255, 255, 255)" }}
+                      >
+                        <ul>
+                          <li className={styles.MenuListOption}>
+                            <a
+                              onClick={() => {
+                                handleLoginClick();
+                                setTimeout(() => {
+                                  setMenuVisible(false);
+                                }, 0);
+                              }}
+                            >
+                              {isAuthenticated ? "Logout" : "Login"}
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div
+                        class="menuListWrpr"
+                        style={{ backgroundColor: "rgb(255, 255, 255)" }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div className={styles.iconMenuOption}>
+              <span class="" style={{ width: "auto" }}>
+                <form
+                  className={styles.msearchContainer}
+                  // style={{ display: "inline-block" }}
+                >
+                  <label>
+                    <img
+                      src="https://images.bewakoof.com/web/ic-web-head-search.svg"
+                      className={styles.headericon}
+                      alt="search-icon"
+                    />
+                  </label>
+                </form>
+              </span>
+              <span>
+                <div class="">
+                  <img
+                    src="https://images.bewakoof.com/web/ic-web-head-wishlist.svg"
+                    className={styles.headericon}
+                    alt="wish-list"
+                    onClick={() => navigate("/wishlist")}
+                  />
+                </div>
+              </span>
+              <span>
+                <img
+                  src="https://images.bewakoof.com/web/ic-web-head-cart.svg"
+                  className={styles.headericon}
+                  alt="shopping-bag"
+                  onClick={() => navigate("/cart")}
+                />
+                {/* <span className="cartCount cartCountHome">9</span> */}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     );
   };

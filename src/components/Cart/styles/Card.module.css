@@ -142,6 +142,9 @@
     flex-direction: column-reverse;
     margin: auto;
   }
+  .em {
+    display: none;
+  }
   .One {
     width: 80%;
     margin: auto;

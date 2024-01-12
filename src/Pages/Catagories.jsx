@@ -3,13 +3,13 @@ import React from "react";
 import Categories from "../components/Categories/Categories";
 import Header from "../components/Categories/Header";
 Header;
-import "./styles/Catagories.module.css";
+import styles from "./styles/Catagories.module.css";
 import Banner from "../components/Categories/Banner";
 import TrendingCat from "../components/Categories/TrendingCat";
 import Musthave from "../components/Categories/Musthave";
 function Catagories() {
   return (
-    <div className="my-list">
+    <div className={styles.mylist}>
       {/* <Navabar /> */}
       <Header />
 

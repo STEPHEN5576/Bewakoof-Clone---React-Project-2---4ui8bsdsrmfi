@@ -96,7 +96,7 @@
                     width: "70%", */
 }
 
-@media only screen and (min-width: 411px) and (max-width: 800px) {
+@media only screen and (min-width: 427px) and (max-width: 800px) {
   .upper {
     display: none;
   }
@@ -109,6 +109,9 @@
   }
   .navlinks > p {
     display: visible !important;
+  }
+  .first-navbar {
+    display: none;
   }
 }
 .suggestionsList {
@@ -132,9 +135,10 @@
   background-color: #f0f0f0;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 410px) {
+@media only screen and (min-width: 0px) and (max-width: 426px) {
   .upper {
     display: none;
+    /* color: blue; */
   }
 
   .bottom {
@@ -143,10 +147,15 @@
     justify-content: space-evenly;
     display: flex;
     flex-direction: column;
+    /* display: none; */
+  }
+  .col-lg-4 {
+    display: none;
   }
   .navlinks {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
+    display: none;
   }
   .logo {
     /* width: 100%; */
@@ -164,4 +173,318 @@
   .brand {
     display: none;
   }
+  .row {
+    display: none;
+  }
+
+  .firstnavbarssss {
+    color: green;
+    display: none;
+  }
+  .mHeaderDiv {
+    height: 56px;
+    top: 0px;
+    background-color: #fff;
+  }
+  .mHeader {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: inherit;
+    flex-flow: inherit;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 56px;
+  }
+  #hambu {
+    display: none;
+  }
+  .mLogoDiv {
+    font-size: 24px;
+    padding: 0;
+    color: #000;
+  }
+  .mLogoDiv {
+    /* height: 24px; */
+    width: 24px;
+    vertical-align: middle;
+    margin-left: 0px;
+  }
+  .mActionMenu {
+    width: calc(100% - 190px);
+    color: #000;
+  }
+  .iconMenuOption {
+    text-align: right;
+    position: absolute;
+    display: flex;
+    right: 8px;
+    /* margin-left: 10px; */
+  }
+  .msearchContainer {
+    width: 100%;
+    text-align: left;
+    left: 0px;
+  }
+  .headericon {
+    margin-left: 10px;
+  }
+  .mMenu {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: -2px;
+    z-index: 1001;
+    overflow-x: hidden;
+    transition: left 0.2s cubic-bezier(0.77, 0.2, 0.05, 1) 0s;
+    background: rgb(255, 255, 255);
+  }
+  .sideMenuHolder {
+    width: 270px;
+    height: 100%;
+    display: block;
+    background: rgb(255, 255, 255);
+    margin: 0px;
+  }
+  .mMenuHead {
+    width: 100%;
+    padding: 0px;
+    border-bottom: 1px solid rgb(216, 216, 216);
+  }
+  .welcomeHeader {
+    width: 100%;
+    padding: 15px 20px;
+    overflow: hidden;
+  }
+  .welcomeGuest {
+    font-family: montserrat-bold, sans-serif;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    line-height: normal;
+  }
+  .mMainMenu {
+    height: 100vh;
+    overflow-y: auto;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-top: 1px;
+  }
+  .menuHeading {
+    font-size: 12px;
+    font-family: montserrat-bold, sans-serif;
+    color: rgba(0, 0, 0, 0.3);
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 14px 20px 5px;
+  }
+  .MenuListOption {
+    line-height: 48px;
+    list-style-type: none;
+  }
+  .MenuListOption a,
+  .sideNavBox .mMenu .mMainMenu .MenuListOption label {
+    display: block;
+    font-family: montserrat-bold, sans-serif;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    padding: 0px 50px 0px 20px;
+    margin: 0px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .menuListWrpr ul {
+    list-style-type: none;
+  }
+  .mMenu2 {
+    display: none;
+  }
+  .inputcheckbox {
+    display: none;
+  }
 }
+@media only screen and (min-width: 427px) and (max-width: 996px) {
+  .upper {
+    display: none;
+    /* color: blue; */
+  }
+
+  .bottom {
+    width: auto;
+    margin: auto;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    /* display: none; */
+  }
+  .col-lg-4 {
+    display: none;
+  }
+  .navlinks {
+    /* display: flex; */
+    flex-direction: row;
+    display: none;
+  }
+  .logo {
+    /* width: 100%; */
+    display: none;
+  }
+  .Search {
+    display: none;
+  }
+  .flag {
+    display: none;
+  }
+  #navlinkss {
+    display: none;
+  }
+  .brand {
+    display: none;
+  }
+  .row {
+    display: none;
+  }
+
+  .firstnavbarssss {
+    color: green;
+    display: none;
+  }
+  .mHeaderDiv {
+    height: 56px;
+    top: 0px;
+    background-color: #fff;
+  }
+  .mHeader {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: inherit;
+    flex-flow: inherit;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 56px;
+  }
+  #hambu {
+    display: none;
+  }
+  .mLogoDiv {
+    font-size: 24px;
+    padding: 0;
+    color: #000;
+  }
+  .mLogoDiv {
+    /* height: 24px; */
+    width: 24px;
+    vertical-align: middle;
+    margin-left: 0px;
+  }
+  .mActionMenu {
+    width: calc(100% - 190px);
+    color: #000;
+  }
+  .iconMenuOption {
+    text-align: right;
+    position: absolute;
+    display: flex;
+    right: 8px;
+    /* margin-left: 10px; */
+  }
+  .msearchContainer {
+    width: 100%;
+    text-align: left;
+    left: 0px;
+  }
+  .headericon {
+    margin-left: 10px;
+  }
+  .mMenu {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: -2px;
+    z-index: 1001;
+    overflow-x: hidden;
+    transition: left 0.2s cubic-bezier(0.77, 0.2, 0.05, 1) 0s;
+    background: rgb(255, 255, 255);
+  }
+  .sideMenuHolder {
+    width: 270px;
+    height: 100%;
+    display: block;
+    background: rgb(255, 255, 255);
+    margin: 0px;
+  }
+  .mMenuHead {
+    width: 100%;
+    padding: 0px;
+    border-bottom: 1px solid rgb(216, 216, 216);
+  }
+  .welcomeHeader {
+    width: 100%;
+    padding: 15px 20px;
+    overflow: hidden;
+  }
+  .welcomeGuest {
+    font-family: montserrat-bold, sans-serif;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    line-height: normal;
+  }
+  .mMainMenu {
+    height: 100vh;
+    overflow-y: auto;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-top: 1px;
+  }
+  .menuHeading {
+    font-size: 12px;
+    font-family: montserrat-bold, sans-serif;
+    color: rgba(0, 0, 0, 0.3);
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 14px 20px 5px;
+  }
+  .MenuListOption {
+    line-height: 48px;
+    list-style-type: none;
+  }
+  .MenuListOption a,
+  .sideNavBox .mMenu .mMainMenu .MenuListOption label {
+    display: block;
+    font-family: montserrat-bold, sans-serif;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    padding: 0px 50px 0px 20px;
+    margin: 0px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .menuListWrpr ul {
+    list-style-type: none;
+  }
+  .mMenu2 {
+    display: none;
+  }
+  .inputcheckbox {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 997px) and (max-width: 2224px) {
+  .mHeaderDiv {
+    display: none;
+  }
+}
+
+/* .firstnavbarssss {
+  color: green;
+  display: none;
+} */
