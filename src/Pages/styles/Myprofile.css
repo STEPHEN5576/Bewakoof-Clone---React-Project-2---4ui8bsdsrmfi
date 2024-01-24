@@ -362,3 +362,9 @@ input[type="radio"] {
   z-index: 1;
   margin: 0;
 }
+
+@media only screen and (min-width: 0px) and (max-width: 426px) {
+  .profilePage .custmPadding {
+    padding: 0px;
+  }
+}

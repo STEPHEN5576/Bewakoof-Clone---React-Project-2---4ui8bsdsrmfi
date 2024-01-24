@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles/form.module.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
-import SuccessModal from "./Modal";
+// import SuccessModal from "./Modal";
+import SuccessModal4 from "./ModalLogin";
 
 const LoginForm = ({ onSignupClick }) => {
   const [form, setForm] = useState({
@@ -16,6 +17,7 @@ const LoginForm = ({ onSignupClick }) => {
   });
   const { isAuthenticated, token } = useSelector((state) => state.auth.data);
   const [show, setshow] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -30,15 +32,34 @@ const LoginForm = ({ onSignupClick }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginAPI(form, { isLogin: true }));
+    setSubmitted(true);
+    console.log(isAuthenticated);
   };
+  useEffect(() => {
+    if (submitted) {
+      // Add a delay of 500 milliseconds (adjust as needed)
+      const delay = 1000;
+
+      // Using setTimeout to wait for the updated isAuthenticated value
+      const timeoutId = setTimeout(() => {
+        if (!isAuthenticated) {
+          setshow(true);
+        }
+      }, delay);
+
+      // Cleanup function to clear the timeout in case the component unmounts
+      return () => clearTimeout(timeoutId);
+    }
+  }, [submitted, isAuthenticated]);
 
   const handleClose = () => {
     setshow(false);
+    setSubmitted(false);
   };
 
   return (
     <div>
-      <SuccessModal
+      <SuccessModal4
         show={show}
         handleClose={handleClose}
         message={"Incorrect Details Entered Please try again."}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Musthave.css";
 import { Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 const images = [
   "https://images.bewakoof.com/uploads/grid/app/Sweaters-Men-desktop-mid-size-banner--3--1701356796.jpg",
   "https://images.bewakoof.com/uploads/grid/app/desktop-mid-size-banner-FS-New--1--1701357152.jpg",
@@ -18,12 +19,14 @@ function Musthave() {
         {imagesChunks.map((row, rowIndex) => (
           <div key={rowIndex} className="Musthaverow">
             {row.map((image, colIndex) => (
-              <Image
-                key={colIndex}
-                draggable={false}
-                style={{ width: "50%", height: "auto" }}
-                src={image}
-              />
+              <Link to={"/search/best seller"}>
+                <Image
+                  key={colIndex}
+                  draggable={false}
+                  style={{ width: "50%", height: "auto" }}
+                  src={image}
+                />
+              </Link>
             ))}
           </div>
         ))}

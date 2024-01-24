@@ -18,6 +18,7 @@ import ComingSoonpage from "./Pages/ComingSoonpage";
 import MyAccount from "./Pages/MyAccount";
 import MyProfile from "./Pages/MyProfile";
 import Oder from "./Pages/Oder";
+import MoblieSearch from "./Pages/MoblieSearch";
 function App() {
   return (
     <div className="App">
@@ -72,7 +73,9 @@ function App() {
             </RequiredAuth>
           }
         />
+        <Route path="moblienav" element={<MoblieSearch />} />
       </Routes>
+
       <Footer />
     </div>
   );

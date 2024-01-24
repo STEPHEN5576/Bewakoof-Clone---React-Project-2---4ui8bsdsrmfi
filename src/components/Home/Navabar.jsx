@@ -406,7 +406,7 @@ const Navabar = () =>
                         style={{ backgroundColor: "rgb(255, 255, 255)" }}
                       >
                         <p className={styles.menuHeading}>SHOP IN</p>
-                        <ul> 
+                        <ul>
                           <li className={styles.MenuListOption}>
                             <a
                               onClick={() => {
@@ -598,6 +598,9 @@ const Navabar = () =>
                       src="https://images.bewakoof.com/web/ic-web-head-search.svg"
                       className={styles.headericon}
                       alt="search-icon"
+                      onClick={() => {
+                        navigate("/moblienav");
+                      }}
                     />
                   </label>
                 </form>

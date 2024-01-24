@@ -43,8 +43,8 @@ export const loginAPI = (creds) => async (dispatch) => {
         type: AUTH_LOGIN_SUCCESS,
         payload: data,
       });
-      const navigate = useNavigate();
-      navigate("/");
+      // const navigate = useNavigate();
+      // navigate("/");
     }
 
     return data.message;
@@ -76,7 +76,7 @@ export const signupAPI = (user) => async (dispatch) => {
     );
 
     const data = await response.json();
-console.error("Signup  Sucess");
+    console.error("Signup  Sucess");
     if (!response.ok) {
       console.error("Signup API Error:", data.message);
       dispatch({ type: AUTH_SIGN_IN_ERROR, error: data.message });
@@ -87,8 +87,8 @@ console.error("Signup  Sucess");
       });
 
       // Check if it's a signup (not a login), then navigate
-      const navigate = useNavigate();
-      navigate("/");
+      // const navigate = useNavigate();
+      // navigate("/");
     }
 
     return data.message;

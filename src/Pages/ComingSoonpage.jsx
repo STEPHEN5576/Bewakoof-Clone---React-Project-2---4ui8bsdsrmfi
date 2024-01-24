@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import "./styles/Comingsoon.css";
+import ComingsoonModal from "../components/ComingSoon/ComingsoonModal";
 
 function ComingSoonpage() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+  };
   return (
     <div
       className="container-xxl py-3"
-      style={{ justifyContent: "center", textAlign: "center", width: "50%" }}
+      style={{ justifyContent: "center", textAlign: "center" }}
     >
+      <ComingsoonModal
+        show={show}
+        handleClose={handleClose}
+        message={
+          "Thank you For using the Bewakoof Please Keep Searching for you Other requirements."
+        }
+      />
       <div className="misc-wrapper">
         <h2 className="mb-2 mx-2">We are Launching soon</h2>
         <p className="mb-4 mx-2">
@@ -15,6 +28,7 @@ function ComingSoonpage() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            setShow(true);
           }}
         >
           <div className="d-flex gap-2">

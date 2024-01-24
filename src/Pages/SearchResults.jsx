@@ -6,23 +6,83 @@ import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "../components/Mens/Dropdown";
 import Card from "../components/Mens/Card";
 import { Circles } from "react-loader-spinner";
+import { fetchProducts } from "../Store/Products/product.actions";
 
 const SearchResults = () => {
   const { inputValue } = useParams();
   const dispatch = useDispatch();
   // const { clothes, loading, error } = useSelector((state) => state.clothes);
   // const { data } = useSelector((state) => state.categories);
-  // const { data, loading, error } = useSelector((state) => state.product);
-  const { clothes, loading, error } = useSelector((state) => state.clothes);
+  const { data, loading, error } = useSelector((state) => state.product);
+  // const { clothes, loading, error } = useSelector((state) => state.clothes);
+const companys = [
+  "BEWAKOOF X STREETWEAR",
+  "TISTABENE",
+  "CHIMPAAANZEE",
+  "THE DAILY OUTFITS",
+  "ANGEL FAB",
+  "INDICLUB",
+  "XYXX",
+  "SAVVAO",
+  "OFFICIAL DISNEY MERCHANDISE",
+  "OFFICIAL NARUTO MERCHANDISE",
+  "OFFICIAL GARFIELD MERCHANDISE",
+  "OFFICIAL TOM %26 JERRY MERCHANDISE",
+  "OFFICIAL MARVEL MERCHANDISE",
+  "OFFICIAL STAR WARS MERCHANDISE",
+  "OFFICIAL DC MERCHANDISE",
+  "OFFICIAL NASA MERCHANDISE",
+  "OFFICIAL MINIONS MERCHANDISE",
+  "OFFICIAL HARRY POTTER MERCHANDISE",
+  "OFFICIAL HOUSE OF THE DRAGON MERCHANDISE",
+  "OFFICIAL LOONEY TUNES MERCHANDISE",
+  "OFFICIAL CARTOON NETWORK MERCHANDISE",
+  "OFFICIAL PEANUTS MERCHANDISE",
+  "OFFICIAL COCA COLA MERCHANDISE",
+  "OFFICIAL RICK AND MORTY MERCHANDISE",
+];
+  const sellertags = ["top rated", "trending", "best seller", "new arrival"];
+  const catogories = [
+    "hoodie",
+    "jeans",
+    "jogger",
+    "jumpsuit",
+    "kurta",
+    "kurti",
+    "pyjamas",
+    "shirt",
+    "shorts",
+    "sweater",
+    "tracksuit",
+    "trouser",
+    "tshirt",
+  ];
 
   useEffect(() => {
-    // Fetch categories when the component mounts
-    dispatch(
-      fetchCategories(
-        "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=100"
-      )
-    );
-  }, [dispatch]);
+    const lowerCasedInput1 = inputValue.toLowerCase();
+    const UpperCasedInput = inputValue.toUpperCase().replace(/\s+/g, "");
+    let url = "";
+    let suburl = ``;
+    console.log("UpperCasedInput:", UpperCasedInput);
+    if (sellertags.includes(lowerCasedInput1)) {
+      // If inputValue is in sellertags, only include sellerTag in the URL
+      suburl = `sellerTag=${lowerCasedInput1}`;
+      url = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?${suburl}`;
+    } else if (catogories.includes(lowerCasedInput1)) {
+      // If inputValue is present, include subCategory in the URL
+      suburl = `subCategory=${lowerCasedInput1}`;
+      url = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?${suburl}`;
+    } else if (companys.includes(UpperCasedInput)) {
+      // If inputValue is present, include subCategory in the URL
+      suburl = `brand=${UpperCasedInput}`;
+      url = `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?${suburl}`;
+    } else {
+      url =
+        "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products";
+    }
+    console.log("URL:", url);
+    dispatch(fetchProducts(url));
+  }, [dispatch, inputValue]);
 
   // console.log("searchapi", data);
 
@@ -50,9 +110,10 @@ const SearchResults = () => {
     );
   }
 
-  const filteredSuggestions = clothes.filter((item) => {
-    // console.log("item", item);
+  const filteredSuggestions = data.filter((item) => {
+    console.log("item", inputValue);
     const lowerCasedInput = inputValue.toLowerCase();
+    const UpperCasedInput = inputValue.toUpperCase();
 
     return (
       item.name.toLowerCase().includes(lowerCasedInput) ||
@@ -61,6 +122,7 @@ const SearchResults = () => {
         item.sellerTag.toLowerCase().includes(lowerCasedInput)) ||
       (item.subCategory &&
         item.subCategory.toLowerCase().includes(lowerCasedInput)) ||
+      (item.brand && item.brand.toUpperCase().includes(UpperCasedInput)) ||
       (Array.isArray(item.size) &&
         item.size.some(
           (size) =>

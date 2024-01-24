@@ -13,7 +13,32 @@ const Colors = [
   { name: "GREEN" },
   { name: "BROWN" },
 ];
-
+const companys = [
+  "BEWAKOOF X STREETWEAR",
+  "TISTABENE",
+  "CHIMPAAANZEE",
+  "THE DAILY OUTFITS",
+  "ANGEL FAB",
+  "INDICLUB",
+  "XYXX",
+  "SAVVAO",
+  "OFFICIAL DISNEY MERCHANDISE",
+  "OFFICIAL NARUTO MERCHANDISE",
+  "OFFICIAL GARFIELD MERCHANDISE",
+  "OFFICIAL TOM %26 JERRY MERCHANDISE",
+  "OFFICIAL MARVEL MERCHANDISE",
+  "OFFICIAL STAR WARS MERCHANDISE",
+  "OFFICIAL DC MERCHANDISE",
+  "OFFICIAL NASA MERCHANDISE",
+  "OFFICIAL MINIONS MERCHANDISE",
+  "OFFICIAL HARRY POTTER MERCHANDISE",
+  "OFFICIAL HOUSE OF THE DRAGON MERCHANDISE",
+  "OFFICIAL LOONEY TUNES MERCHANDISE",
+  "OFFICIAL CARTOON NETWORK MERCHANDISE",
+  "OFFICIAL PEANUTS MERCHANDISE",
+  "OFFICIAL COCA COLA MERCHANDISE",
+  "OFFICIAL RICK AND MORTY MERCHANDISE",
+];
 const Dropdown = ({ Sort }) => {
   const [open, isOpen] = useState(false);
   const [open1, isOpen1] = useState(false);
@@ -128,6 +153,32 @@ const Dropdown = ({ Sort }) => {
               />
               New Arrival
             </div>
+            <div className="dropdown-item">
+              <input
+                type="checkbox"
+                onChange={(e) => {
+                  if (e.target.checked === true) {
+                    let url =
+                      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?sellerTag=top rated";
+                    dispatch(fetchProducts(url));
+                  }
+                }}
+              />
+              Top Rated
+            </div>
+            <div className="dropdown-item">
+              <input
+                type="checkbox"
+                onChange={(e) => {
+                  if (e.target.checked === true) {
+                    let url =
+                      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?sellerTag=best seller";
+                    dispatch(fetchProducts(url));
+                  }
+                }}
+              />
+              best seller
+            </div>
           </div>
         ) : (
           ""
@@ -146,9 +197,9 @@ const Dropdown = ({ Sort }) => {
                 type="checkbox"
                 onChange={(e) => {
                   if (e.target.checked === true) {
-                     let url =
-                       "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?ratings=1.5&ratings=1.6&ratings=1.7&ratings=1.8&1.9";
-                     dispatch(fetchProducts(url));
+                    let url =
+                      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?ratings=1.5&ratings=1.6&ratings=1.7&ratings=1.8&1.9";
+                    dispatch(fetchProducts(url));
                   }
                 }}
               />
@@ -159,9 +210,9 @@ const Dropdown = ({ Sort }) => {
                 type="checkbox"
                 onChange={(e) => {
                   if (e.target.checked === true) {
-                     let url =
-                       "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?ratings=2&ratings=2.1&ratings=2.2&ratings=2.3&ratings=2.4&ratings=2.5&ratings=2.6&ratings=2.7&ratings=2.8&ratings=2.9";
-                     dispatch(fetchProducts(url));
+                    let url =
+                      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?ratings=2&ratings=2.1&ratings=2.2&ratings=2.3&ratings=2.4&ratings=2.5&ratings=2.6&ratings=2.7&ratings=2.8&ratings=2.9";
+                    dispatch(fetchProducts(url));
                   }
                 }}
               />
@@ -172,9 +223,9 @@ const Dropdown = ({ Sort }) => {
                 type="checkbox"
                 onChange={(e) => {
                   if (e.target.checked === true) {
-                     let url =
-                       "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?ratings=3&ratings=3.1&ratings=3.2&ratings=3.3&ratings=3.4&ratings=3.5&ratings=3.6&ratings=3.7&ratings=3.8&ratings=3.9";
-                     dispatch(fetchProducts(url));
+                    let url =
+                      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?ratings=3&ratings=3.1&ratings=3.2&ratings=3.3&ratings=3.4&ratings=3.5&ratings=3.6&ratings=3.7&ratings=3.8&ratings=3.9";
+                    dispatch(fetchProducts(url));
                   }
                 }}
               />
@@ -185,9 +236,9 @@ const Dropdown = ({ Sort }) => {
                 type="checkbox"
                 onChange={(e) => {
                   if (e.target.checked === true) {
-                     let url =
-                       "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=100&ratings=4.1&ratings=4.2&ratings=4.3&ratings=4.4&ratings=4.5&ratings=4.6&ratings=4.7&ratings=4.8&ratings=4.9&ratings=5";
-                     dispatch(fetchProducts(url));
+                    let url =
+                      "https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=100&ratings=4.1&ratings=4.2&ratings=4.3&ratings=4.4&ratings=4.5&ratings=4.6&ratings=4.7&ratings=4.8&ratings=4.9&ratings=5";
+                    dispatch(fetchProducts(url));
                   }
                 }}
               />
@@ -206,10 +257,23 @@ const Dropdown = ({ Sort }) => {
         </div>
         {open2 ? (
           <div className="dropdown-content">
-            <div className="dropdown-item">
-              <input type="checkbox" />
-              Bewakoof
-            </div>
+            {companys.map((item, index) => (
+              <div className="dropdown-item" key={index}>
+                <input
+                  type="checkbox"
+                  onChange={(e) => {
+                    if (e.target.checked === true) {
+                      dispatch(
+                        fetchProducts(
+                          `https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?brand=${item}`
+                        )
+                      );
+                    }
+                  }}
+                />
+                {item}
+              </div>
+            ))}
           </div>
         ) : (
           ""

@@ -189,10 +189,11 @@ const Details = ({ item }) => {
                     style={{
                       backgroundColor:
                         selected && buttonindex === index ? color : "none",
+                      border:"none"
                     }}
                     onClick={() => {
                       setSelect(true);
-                      setColor("blue");
+                      setColor("gray");
                       setButtonIndex(index);
                     }}
                   >

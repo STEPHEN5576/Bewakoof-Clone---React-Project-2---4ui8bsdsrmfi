@@ -31,6 +31,7 @@
   padding: 10px;
   cursor: pointer;
   transition: all 0.2s;
+  overflow: hidden;
 }
 .dropdown .dropdown-content .dropdown-item:hover {
   background: #fff;

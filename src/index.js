@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = Store;
 
 // Log the initial state to the console
-console.log(store.getState());
+// console.log(store.getState());
 
 root.render(
   

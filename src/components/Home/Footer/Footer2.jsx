@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./styles/Footer2.module.css";
+import { useNavigate } from "react-router";
 
 const List1 = [
-  "Top Wear",
-  "Men's New Arrivals",
+  "shirt",
+  "New Arrival",
   "Men's Half Sleeve T-Shirts",
-  "Men's Hoodies & Sweatshirts",
+  "Hoodies & Sweatshirts",
   "Men's Long Sleeve T-shirts",
   "Men's Printed T-shirts",
   "Men's Plain T-shirts",
@@ -70,13 +71,16 @@ const List3 = [
   "Oppo",
 ];
 const Footer2 = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <div>
         <ul>
           <h5>MEN'S CLOTHING</h5>
           {List1.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index} onClick={() => navigate("/search" + "/" + item)}>
+              {item}
+            </li>
           ))}
         </ul>
       </div>
